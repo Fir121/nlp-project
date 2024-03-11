@@ -1,4 +1,4 @@
-Grade Score 
+# Grade Score 
 
 Grading essays is a time-consuming task for university professors, often leading to delays in providing feedback to students. Additionally, subjective biases may influence grading consistency. To address these challenges, we aim to develop an automated essay grading system powered by Natural Language Processing (NLP) techniques. This system will enable professors to efficiently assess students' essays, provide timely feedback, and identify areas for improvement, ultimately enhancing the grading process and learning outcomes.
 
