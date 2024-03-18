@@ -1,0 +1,2 @@
+grader.py under progress only semantic part implemented
+Semantic Similarity mostly done, need discussion on threshold, weights etc. 
