@@ -15,6 +15,5 @@ if st.button("Compute"):
     st.write("Similarity for _Answer_ 1: ",grades[0],size=30)
     st.write("Similarity for _Answer_ 2: ",grades[1],size=30)
     st.write("Similarity for _Answer_ 3: ",grades[2],size=30)
-
-
+    st.divider()
 
