@@ -12,8 +12,8 @@ if st.button("Compute"):
     answers = [answer1,answer2,answer3]
     grades = grader.grader(question,ref_ans,answers)
     st.divider()
-    st.write("Similarity for _Answer_ 1: ",grades[0],size=30)
-    st.write("Similarity for _Answer_ 2: ",grades[1],size=30)
-    st.write("Similarity for _Answer_ 3: ",grades[2],size=30)
+    st.write("Similarity for _Answer_ 1: ",grades[0])
+    st.write("Similarity for _Answer_ 2: ",grades[1])
+    st.write("Similarity for _Answer_ 3: ",grades[2])
     st.divider()
 

@@ -2,7 +2,7 @@ import SemanticSimilarity
 
 def grader(question,answer,answers):
     semantic_sim = SemanticSimilarity.SemanticSimilarity(question,answer,answers)
-    print(semantic_sim)
+    return semantic_sim
 
 
 
