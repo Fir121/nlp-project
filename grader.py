@@ -1,8 +1,10 @@
-import SemanticSimilarity
+import relevance,accuracy,coherence
 
-def grader(question,answer,answers):
-    semantic_sim = SemanticSimilarity.SemanticSimilarity(question,answer,answers)
-    return semantic_sim
+def grader(question,ref_ans,answer):
+    final = dict(relevance = relevance.relevance(question,ref_ans,answer),
+                 accuracy = accuracy.accuracy(ref_ans,answer),
+                 coherence = coherence.coherence(ref_ans,answer))
+    return final
 
 
 
