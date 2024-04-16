@@ -9,7 +9,10 @@ def coherence(ref_ans,ans):
         "https://storage.googleapis.com/sgnlp-models/models/coherence_momentum/config.json")
     model = CoherenceMomentumModel.from_pretrained(
         "https://storage.googleapis.com/sgnlp-models/models/coherence_momentum/pytorch_model.bin",
-        config=config)"""
+        config=config)
+        
+        model.save_pretrained("coherence_model")
+        """
     
     config = CoherenceMomentumConfig.from_pretrained("coherence_model")
     model = CoherenceMomentumModel.from_pretrained("coherence_model")
