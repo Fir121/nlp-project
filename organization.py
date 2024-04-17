@@ -5,7 +5,7 @@ def organization(answer):
     #Ignore all warnings
     warnings.filterwarnings('ignore')
     #Split in senteces
-    sentence = answer.replace("!",".").split(".")
+    sentence = answer.replace("!",".").replace("?",".").split(".")
 
     similarity = []
     if len(sentence)>1:
@@ -16,6 +16,10 @@ def organization(answer):
         return float(100)
     
     final_similarity = (sum(similarity) / len(similarity) + 1)*50
+
+    if final_similarity < 0:
+        final_similarity = 0 
+
     return final_similarity
 
 def A2A(ans1,ans2):
@@ -28,5 +32,3 @@ def A2A(ans1,ans2):
     ans_similarity = float(util.pytorch_cos_sim(ref_embedding, ans_embedding))
 
     return ans_similarity
-
-print(organization("Computer Science teaches python. Python is an interpreter."))

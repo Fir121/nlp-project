@@ -13,6 +13,9 @@ def relevance(question,ref_answer,answer):
     similarity = Q2A(question,answer)
     final_similarity = (1 / math.exp(15*abs(original_similarity-similarity)))*100
 
+    if final_similarity < 0:
+        final_similarity = 0 
+
     return final_similarity
 
 def Q2A(question,ans):

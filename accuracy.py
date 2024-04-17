@@ -6,7 +6,9 @@ def accuracy(ref_answer,answer):
     warnings.filterwarnings('ignore')
     #Get Similarity from model
     similarity = A2A(ref_answer,answer)
-    final_similarity = (1 - 1 / math.exp(3*abs(similarity)))*100
+    final_similarity = (1 - 1 / math.exp(3*similarity))*100
+    if final_similarity < 0:
+        final_similarity = 0 
 
     return final_similarity
 
