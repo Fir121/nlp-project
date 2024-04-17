@@ -4,16 +4,12 @@ import grader
 st.header("Basic model")
 question = st.text_input("Enter the question:")
 ref_ans = st.text_area("Enter the reference answer:")
-answer1 = st.text_area("Enter the answer 1:")
-answer2 = st.text_area("Enter the answer 2:")
-answer3 = st.text_area("Enter the answer 3:")
+answer = st.text_area("Enter the answer:")
+
 
 if st.button("Compute"):
-    answers = [answer1,answer2,answer3]
-    grades = grader.grader(question,ref_ans,answers)
+    grades = grader.grader(question,ref_ans,answer)
     st.divider()
-    st.write("Similarity for _Answer_ 1: ",grades[0])
-    st.write("Similarity for _Answer_ 2: ",grades[1])
-    st.write("Similarity for _Answer_ 3: ",grades[2])
+    st.write("Summary:",grades)
     st.divider()
 
