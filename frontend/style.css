@@ -1,277 +1,277 @@
 .outfit-font {
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-  }
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
 
 body {
-    font-family: "Outfit", sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "Outfit", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 header {
-    display: flex; 
-    align-items: center;
-    color: #000000;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  padding: 10px;
 }
-
-.logo {
-    margin-right: 10px;
-}
-
 .header-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
-    margin: 0 0 5px 0; 
-    font-size: 24px;
-    color: #333;
+  margin: 0 0 5px 0;
+  font-size: 24px;
+  color: #333;
 }
 
 h2 {
-    margin: 0; 
-    font-size: 18px;
-    color: #666;
+  margin: 0;
+  font-size: 18px;
+  color: #666;
 }
-
 
 nav {
-    margin-left: auto;
-    float: right;
+  margin-left: auto;
+  float: right;
 }
 nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 nav ul li {
-    display: inline;
+  display: inline;
 }
 nav ul li a {
-    color: #000000;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  color: #000000;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 nav ul li a:hover {
-    background-color: #eed9c4;
+  background-color: #eed9c4;
 }
-  
-.img{
-    width: 67.2px;
-    height: 70px;
+
+.img {
+  width: 67.2px;
+  height: 70px;
+  object-fit: contain;
 }
 
 .paragraph1 {
-    margin: 0 74.1px 70px 49px;
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    box-sizing: border-box;
+  margin: 0 74.1px 70px 49px;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  box-sizing: border-box;
 }
 
 .bg-image {
-    background-image: url('pictures/frontpage.png');
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 543px;
-    height: 459px;
+  background-image: url("pictures/frontpage.png");
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 543px;
+  height: 459px;
 }
 
 .content {
-    margin: 46px 0 114px 0;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+  margin: 46px 0 114px 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 .title {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    font-family: 'Outfit';
-    font-weight: bold;
-    font-size: 32px;
-    color: #000000;
-    word-break: break-word;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  font-family: "Outfit";
+  font-weight: bold;
+  font-size: 32px;
+  color: #000000;
+  word-break: break-word;
 }
 
 .description {
-    margin: 0 9.7px 33px 0;
-    word-wrap: break-word;
-    font-family: 'Outfit', sans-serif;
-    font-weight: normal;
-    font-size: 14px;
-    color: #000000;
+  margin: 0 9.7px 33px 0;
+  word-wrap: break-word;
+  font-family: "Outfit", sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+  color: #000000;
 }
 
 .signup {
-    margin: 0;
-    padding: 8px 15.5px 9px 15px;
-    background-color: #e3d2c0;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 8px 15.5px 9px 15px;
+  background-color: #e3d2c0;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .signup-button {
-    text-decoration: none; 
-    word-wrap: break-word;
-    font-family: 'Outfit', sans-serif;
-    font-weight: bold;
-    font-size: 17px;
-    color: #000000;
-    width: 250px;
-    text-align: center;
+  text-decoration: none;
+  word-wrap: break-word;
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  color: #000000;
+  width: 250px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 4px;
 }
 
 .signup-button:hover {
-    background-color: #d4bca4; 
+  background-color: #d4bca4;
 }
 
 .container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 50px 20px;
-    background-color: #EED9C466;
+  width: 100vw;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: #eed9c466;
+  margin-bottom: 50px;
 }
 
 .box {
-    background-color: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
 }
 
 .box h2 {
-    margin-bottom: 10px;
+  color: #000000;
+  margin-bottom: 10px;
 }
 
 .box p {
-    font-size: 14px;
-    color: #000000;
+  font-size: 14px;
+  color: #000000;
 }
 
 .box img {
-    width: 100px; 
-    border-radius: 10px;
-    margin-bottom: 10px;
+  width: 100px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /*SIGNUP*/
 .signup-container {
-    margin: 46px 0 114px 0;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-  }
-  
-  .image-section {
-    display: flex;
-    align-items: flex-start; 
-  }
-  
-  .signup-image {
-    background-image: url('pictures/signup.png');
-    background-position: 50% 50%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 543px;
-    height: 459px;
-  }
-  
-  .login-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .title {
-    margin: 0 0 3px 0;
-    font-family: 'Outfit', sans-serif;
-    font-weight: bold;
-    font-size: 50px;
-    color: #000000;
-  }
-  
-  .sign-up {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 0 37px 0;
-  }
-  
-  .sign-up-button {
-    margin-left: 3px;
-    padding: 3px 6px;
-    border-radius: 10px;
-    background-color: rgba(118, 79, 41, 0.3);
-    font-family: 'Outfit', sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .google-login,
-  .apple-login {
-      border: 1px solid #000000;
-      background-color: #FFFDFD;
-      border-radius: 10px;
-      margin: 0 0 20px 0;
-      display: flex;
-      justify-content: center; 
-      align-items: center; 
-      padding: 19px 19px 21px 19px; 
-      width: 300px; 
-      height: 30px;
-      position: relative;
-      box-sizing: border-box;
-  }
-  
-  .google-icon {
-    background-image: url(pictures/googleicon.png);
-    width: 30px; 
-    height: 30px; 
-    background-size: contain; 
-    background-repeat: no-repeat; 
-    background-position: center; 
-    margin-right: 10px;
-  }
+  margin: 46px 0 114px 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
 
-  .apple-icon {
-    background-image: url(pictures/appleicon.png);
-    width: 36.7px; 
-    height: 46px; 
-    background-size: contain; 
-    background-repeat: no-repeat; 
-    background-position: center; 
-    margin-right: 10px;
-  }
-  
-  .text {
-      font-family: 'Outfit';
-      font-weight: medium;
-      font-size: 18px;
-      color: #000000;
-      margin: 1px 0;
-      text-align: center;
-      display: inline-block;
-      box-sizing: border-box;
-  }  
+.image-section {
+  display: flex;
+  align-items: flex-start;
+}
+
+.signup-image {
+  background-image: url("pictures/signup.png");
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 543px;
+  height: 459px;
+}
+
+.login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  margin: 0 0 3px 0;
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  color: #000000;
+}
+
+.sign-up {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 37px 0;
+}
+
+.sign-up-button {
+  margin-left: 3px;
+  padding: 3px 6px;
+  border-radius: 10px;
+  background-color: rgba(118, 79, 41, 0.3);
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.google-login,
+.apple-login {
+  border: 1px solid #000000;
+  background-color: #fffdfd;
+  border-radius: 10px;
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 19px 19px 21px 19px;
+  width: 300px;
+  height: 30px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.google-icon {
+  background-image: url(pictures/googleicon.png);
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+.apple-icon {
+  background-image: url(pictures/appleicon.png);
+  width: 36.7px;
+  height: 46px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+
+.text {
+  font-family: "Outfit";
+  font-weight: medium;
+  font-size: 18px;
+  color: #000000;
+  margin: 1px 0;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+}
 
 .email-section {
   margin-bottom: 12px;
@@ -279,144 +279,845 @@ nav ul li a:hover {
 
 .title {
   margin-bottom: 3px;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: bold;
   font-size: px;
   color: #000000;
 }
 .email-address-section {
-    margin-bottom: 14px;
-  }
-  
-  .email-address-text, .enter-name {
-    font-family: 'Outfit', sans-serif;
-    font-weight: bold;
-    font-size: 15.5px;
-    color: rgba(0, 0, 0, 0.6);
-    word-break: break-word;
-    display: inline-block;
-    align-self: flex-start;
-  }
-  
+  margin-bottom: 14px;
+}
+
+.email-address-text,
+.enter-name {
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+  font-size: 15.5px;
+  color: rgba(0, 0, 0, 0.6);
+  word-break: break-word;
+  display: inline-block;
+  align-self: flex-start;
+}
+
 .password-section {
-    margin: 0 369px 9px 0;
-  }
-  
-  .password-text {
-    font-family: 'Outfit', sans-serif;
-    font-weight: bold;
-    font-size: 15.5px;
-    color: rgba(0, 0, 0, 0.6);
-    word-break: break-word;
-    display: inline-block;
-  }
-  
+  margin: 0 369px 9px 0;
+}
+
+.password-text {
+  font-family: "Outfit", sans-serif;
+  font-weight: bold;
+  font-size: 15.5px;
+  color: rgba(0, 0, 0, 0.6);
+  word-break: break-word;
+  display: inline-block;
+}
+
 .input-box {
-    width: 300px;
-    height: 30px;
-    border: 1px solid #000000;
-    background-color: #FFFDFD;
-    border-radius: 10px;
+  width: 300px;
+  height: 30px;
+  border: 1px solid #000000;
+  background-color: #fffdfd;
+  border-radius: 10px;
 }
 
 /*LOGIN PAGE*/
-.join-container, .button-container  {
-    display: flex;
-  }
-  .join-as-teacher, .submit-button {
-    border-radius: 20px;
-    background-color: #764F29;
-    margin: 0 10px 9px 0; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 4.5px 20px 0;
-    width: 160px;
-    height: 50px;
-    position: relative;
-    box-sizing: border-box;
-  }
+.join-container,
+.button-container {
+  display: flex;
+}
+.join-as-teacher,
+.submit-button {
+  border-radius: 20px;
+  background-color: #764f29;
+  margin: 0 10px 9px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 4.5px 20px 0;
+  width: 160px;
+  height: 50px;
+  position: relative;
+  box-sizing: border-box;
+}
 
-  .join-as-student, .back-button  {
-    border-radius: 20px;
-    background-color: #FFFDFD;
-    margin: 0 10px 9px 0; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 4.5px 20px 0;
-    width: 160px;
-    height: 50px;
-    position: relative;
-    box-sizing: border-box;
-    border-color: #000000;
-  }
-  
-  .join-text {
-    margin: 0;
-    padding: 0;
-    font-family: 'Outfit';
-    font-weight: bold;
-    font-size: 19px;
-    color: #666;
-  }
-  
-  .text-teacher {
-    font-family: 'Outfit';
-    font-weight: medium;
-    font-size: 18px;
-    color: #ffffff;
-  }
+.join-as-student,
+.back-button {
+  border-radius: 20px;
+  background-color: #fffdfd;
+  margin: 0 10px 9px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 4.5px 20px 0;
+  width: 160px;
+  height: 50px;
+  position: relative;
+  box-sizing: border-box;
+  border-color: #000000;
+}
 
-  .text-student {
-    font-family: 'Outfit';
-    font-weight: medium;
-    font-size: 18px;
-    color: #764F29;
-  }
-  
+.join-text {
+  margin: 0;
+  padding: 0;
+  font-family: "Outfit";
+  font-weight: bold;
+  font-size: 19px;
+  color: #666;
+}
+
+.text-teacher {
+  font-family: "Outfit";
+  font-weight: medium;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.text-student {
+  font-family: "Outfit";
+  font-weight: medium;
+  font-size: 18px;
+  color: #764f29;
+}
+
 /*FOOTER*/
 .footer-container {
-  background-color: #764F29;
-  padding: 20px 30px; 
-  width: 100%; 
+  background-color: #764f29;
+  padding: 20px 30px;
+  width: 100%;
   box-sizing: border-box;
 }
 
 .footer-links {
   margin-bottom: 11px;
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: space-between;
-  width: auto; 
-  max-width: 100%; 
+  width: auto;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
 .footer-link {
-  margin: 0 10px 10px 0; 
+  margin: 0 10px 10px 0;
   width: calc(50% - 10px);
-  font-family: 'Outfit';
-  font-size: 14px; 
-  color: #FFFFFF;
+  font-family: "Outfit";
+  font-size: 14px;
+  color: #ffffff;
   text-align: left;
 }
 
 .footer-icons {
   display: flex;
-  width: auto; 
+  width: auto;
   box-sizing: border-box;
 }
 
 .social-icon {
   background-size: cover;
-  width: 24px; 
-  height: 24px; 
+  width: 24px;
+  height: 24px;
 }
 
 .copyright {
-  margin-top: 10px; 
-  font-family: 'Outfit';
+  margin-top: 10px;
+  font-family: "Outfit";
   font-size: 12px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/*STUDENT LOGIN*/
+.desktop-12 {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 354px;
+  width: 1440px;
+  box-sizing: border-box;
+}
+.desktop-12 .image-removebg-preview-11 {
+  background: url("../assets/images/imageRemovebgPreview11.png") 50% / cover
+    no-repeat;
+  margin-right: 5.8px;
+  width: 67.2px;
+  height: 70px;
+}
+.desktop-12 .grade-scale {
+  position: relative;
+  margin: 9px 0 28px 0;
+  display: inline-block;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 26px;
+  color: #000000;
+}
+.desktop-12 .grading-evolved {
+  position: absolute;
+  left: 92px;
+  bottom: 32px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.65);
+}
+.desktop-12 .hello-abhinav-pathak {
+  position: relative;
+  margin: 0 49px 61px 49px;
+  display: inline-block;
+  align-self: flex-start;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 50px;
+  color: #000000;
+}
+.desktop-12 .courses {
+  margin: 0 88px 35px 88px;
+  display: inline-block;
+  align-self: flex-start;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 600;
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.desktop-12 .hello {
+  position: absolute;
+  left: 49px;
+  top: 155px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 50px;
+  color: #000000;
+}
+.desktop-12 .rectangle-7 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  left: 336px;
+  bottom: 33px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .rectangle-6 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  left: 33px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .rectangle-8 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  right: 343px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .nlp {
+  position: relative;
+  margin-right: 15px;
+  width: 190.3px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .compiler-construction {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .theory-of-computation {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .search-for-courses-tools-settings-or-anything {
+  margin: 2px 0 3px 0;
+  display: inline-block;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 300;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.desktop-12 .image-removebg-preview-21 {
+  background: url("../assets/images/imageRemovebgPreview21.png") 50% / cover
+    no-repeat;
+  width: 24px;
+  height: 30px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-21 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  left: 56px;
+  top: 77px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-22 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  left: 359px;
+  top: 77px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .social-profile-pic-1 {
+  border-radius: 60px;
+  background: url("../assets/images/socialProfilePic1.png") 50% / cover
+    no-repeat;
+  margin: 8px 0 2px 0;
+  width: 60px;
+  height: 60px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-210 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .rectangle-33 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  right: 40px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-211 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  top: 77px;
+  right: 63px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .computer-networking {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .rectangle-35 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  left: 336px;
+  bottom: 33px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .rectangle-36 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  left: 33px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .rectangle-37 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  right: 343px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .machine-learning {
+  position: relative;
+  margin-right: 15px;
+  width: 358px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .daa {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .deep-learning {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-212 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  left: 56px;
+  top: 77px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-213 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  left: 359px;
+  top: 77px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .section-l-3 {
+  position: relative;
+  margin-right: 0px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-215 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .rectangle-38 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  right: 40px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-216 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  top: 77px;
+  right: 63px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .rectangle-40 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  left: 336px;
+  bottom: 33px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .rectangle-41 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  left: 33px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .rectangle-42 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  right: 343px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .section-l-1 {
+  position: relative;
+  margin-right: 15px;
+  width: 285.7px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .section-l-2 {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .section-l-31 {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-217 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  left: 56px;
+  top: 77px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-218 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  left: 359px;
+  top: 77px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .section-l-32 {
+  position: absolute;
+  right: 428.2px;
+  bottom: 48px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .section-l-33 {
+  position: relative;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 400;
+  font-size: 24px;
+  color: #000000;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-220 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .rectangle-43 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  background: #ffffff;
+  position: absolute;
+  right: 40px;
+  bottom: 31px;
+  width: 280px;
+  height: 280px;
+}
+.desktop-12 .print-math-class-calculator-and-other-supplies-221 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  top: 77px;
+  right: 63px;
+  width: 235px;
+  height: 184px;
+}
+.desktop-12 .container {
+  border-radius: 10px;
+  background: rgba(217, 217, 217, 0.5);
+  position: relative;
+  margin: 9px 0 4px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 14px 0 13px 16px;
+  width: 896px;
+  height: fit-content;
+  box-sizing: border-box;
+}
+.desktop-12 .container-1 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  top: 77px;
+  right: 366px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 235px;
+  height: 184px;
+  box-sizing: border-box;
+}
+.desktop-12 .container-2 {
+  border-radius: 20px;
+  background: rgba(238, 217, 196, 0.4);
+  position: relative;
+  margin: 0 72px 0 102px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 274px 121.2px 48px 120.5px;
+  width: 1266px;
+  box-sizing: border-box;
+}
+.desktop-12 .container-3 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  top: 77px;
+  right: 366px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 235px;
+  height: 184px;
+  box-sizing: border-box;
+}
+.desktop-12 .container-4 {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+  position: relative;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 41px 20px 15px;
+  width: 1440px;
+  box-sizing: border-box;
+}
+.desktop-12 .container-5 {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+}
+.desktop-12 .container-6 {
+  border-radius: 20px;
+  background: rgba(238, 217, 196, 0.4);
+  position: relative;
+  margin: 0 82px 13px 92px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 274px 121.2px 48px 78.4px;
+  width: 1266px;
+  box-sizing: border-box;
+}
+.desktop-12 .container-7 {
+  background: url("../assets/images/printMathClassCalculatorAndOtherSupplies221.png")
+    50% / cover no-repeat;
+  position: absolute;
+  top: 77px;
+  right: 366px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 235px;
+  height: 184px;
+  box-sizing: border-box;
+}
+.desktop-12 .container-8 {
+  border-radius: 20px;
+  background: rgba(238, 217, 196, 0.4);
+  position: relative;
+  margin: 0 82px 13px 92px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 274px 57.5px 48px 0;
+  width: 1266px;
+  box-sizing: border-box;
+}
+
+/*NLP COURSE*/
+
+.search-container {
+  border-radius: 10px;
+  background: rgba(217, 217, 217, 0.5);
+  position: relative;
+  margin: 9px 0 4px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 14px 0 13px 16px;
+  width: 896px;
+  height: fit-content;
+  box-sizing: border-box;
+}
+
+.search-text {
+  margin: 2px 0 3px 0;
+  display: inline-block;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 300;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.grade-scale {
+  position: relative;
+  margin: 9px 0 28px 0;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 26px;
+  color: #000000;
+}
+
+.grading-evolved {
+  position: absolute;
+  left: 92px;
+  bottom: 32px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.image-removebg-preview-1 {
+  background: url("../assets/images/imageRemovebgPreview11.png") 50% / cover
+    no-repeat;
+  margin-right: 5.8px;
+  width: 67.2px;
+  height: 70px;
+}
+
+.natural-language-processing {
+  margin: 0 49px 6px 49px;
+  align-self: flex-start;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 50px;
+  color: #000000;
+}
+
+.section-l-1 {
+  margin: 0 57px 32px 57px;
+  align-self: flex-start;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 600;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.assessment-list {
+  margin: 0 86px 42px 86px;
+  display: inline-block;
+  align-self: flex-start;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 600;
+  font-size: 40px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.active-upcoming-assessments {
+  margin: 0 86px 8px 86px;
+  display: inline-block;
+  align-self: flex-start;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 600;
+  font-size: 40px;
+  color: rgba(2, 118, 0, 0.7);
+}
+
+.name {
+  margin-right: 15px;
+  width: 928.7px;
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.due-date {
+  overflow-wrap: break-word;
+  font-family: "Outfit";
+  font-weight: 700;
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.assessments-container {
+  border-radius: 20px;
+  background: rgba(238, 217, 196, 0.4);
+  position: relative;
+  margin: 0 80px 42px 79px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 68.3px 58px 68.3px;
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.rectangle-1 {
+  opacity: 0.5;
+  width: 90%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background: #ffffff;
+  position: absolute;
+  left: 43px;
+  top: 58px;
+  right: 39px;
+  height: 53px;
+}
+
+.rectangle-2,
+.rectangle-3,
+.rectangle-4,
+.rectangle-5,
+.rectangle-6 {
+  opacity: 0.5;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background: #ffffff;
+  position: absolute;
+  left: 43px;
+  top: 119px;
+  right: 39px;
+  height: 53px;
 }

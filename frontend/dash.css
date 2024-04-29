@@ -1,0 +1,713 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 12px;
+    margin: 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh;
+  }
+  .course-page {
+    width: 100%;
+    max-width: 1400px;
+    height: 1800px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    padding-top: 100px;
+    padding-left: 20px;
+
+  }
+  .header-bg {
+    width: 100%;
+    height: 105px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .logo {
+    width: 67px;
+    height: 70px;
+    background: url("pictures/logo.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    overflow: hidden;
+  }
+  .grade-scale {
+    width: 141px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 24px;
+    left: 88px;
+    font-family: Outfit;
+    font-weight: Bold;
+    font-size: 26px;
+    opacity: 1;
+    text-align: left;
+  }
+  .slogan {
+    width: 132px;
+    color: rgba(0,0,0,0.6499999761581421);
+    position: absolute;
+    top: 53px;
+    left: 92px;
+    font-family: Outfit;
+    font-weight: Bold;
+    font-size: 16px;
+    opacity: 1;
+    text-align: left;
+  }
+  .welcome-message {
+    width: 527px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 155px;
+    left: 49px;
+    font-family: Outfit;
+    font-weight: Bold;
+    font-size: 50px;
+    opacity: 1;
+    text-align: left;
+  }
+  .courses {
+    width: 145px;
+    color: rgba(0,0,0,0.699999988079071);
+    position: absolute;
+    top: 279px;
+    left: 88px;
+    font-family: Outfit;
+    font-weight: SemiBold;
+    font-size: 40px;
+    opacity: 1;
+    text-align: left;
+  }
+  .hello {
+    width: 502px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 155px;
+    left: 49px;
+    font-family: Outfit;
+    font-weight: Bold;
+    font-size: 50px;
+    opacity: 1;
+    text-align: left;
+  }
+  .course-card1 {
+    width: 90%;
+    height: 352px;
+    background: rgba(238,217,196,0.4000000059604645);
+    opacity: 1;
+    position: absolute;
+    top: 364px;
+    left: 92px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .course-card2 {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 403px;
+    left: 428px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .course-card {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 405px;
+    left: 125px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .course-card4 {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 405px;
+    left: 735px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .nlp {
+    width: 45px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 638px;
+    left: 243px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .cc {
+    width: 240px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 638px;
+    left: 448px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .toc {
+    width: 250px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 638px;
+    left: 750px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .search-bar {
+    width: 896px;
+    height: 57px;
+    background: rgba(217,217,217,0.5);
+    opacity: 1;
+    position: absolute;
+    top: 24px;
+    left: 322px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  .search-text {
+    width: 428px;
+    color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 40px;
+    left: 393px;
+    font-family: Outfit;
+    font-weight: Light;
+    font-size: 20px;
+    opacity: 1;
+    text-align: center;
+  }
+  .search-icon {
+    width: 24px;
+    height: 30px;
+    background: url("pictures/search.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 38px;
+    left: 338px;
+    overflow: hidden;
+  }
+  .nlp-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 441px;
+    left: 148px;
+    overflow: hidden;
+  }
+  .cc-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 441px;
+    left: 451px;
+    overflow: hidden;
+  }
+  .toc-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 441px;
+    left: 757px;
+    overflow: hidden;
+  }
+  .cn {
+    width: 237px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 638px;
+    left: 1064px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  .cn-box {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    background: url("pictures/calculator.png"); 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 405px;
+    left: 1038px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+  .name {
+    color: #fff;
+  }
+  .course-card5 {
+    width: 90%;
+    height: 352px;
+    background: rgba(238,217,196,0.4000000059604645);
+    opacity: 1;
+    position: absolute;
+    top: 729px;
+    left: 92px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .course-card6 {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 768px;
+    left: 428px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .course-card7 {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 770px;
+    left: 125px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .course-card8 {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 770px;
+    left: 735px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .ml {
+    width: 191px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1003px;
+    left: 170px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .daa {
+    width: 51px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1003px;
+    left: 543px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .dl {
+    width: 158px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1003px;
+    left: 796px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .ml-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 806px;
+    left: 148px;
+    overflow: hidden;
+  }
+  .daa-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 806px;
+    left: 451px;
+    overflow: hidden;
+  }
+  .dl-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 806px;
+    left: 757px;
+    overflow: hidden;
+  }
+  .section-l3 {
+    width: 110px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1003px;
+    left: 1127px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .dl-icon {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 806px;
+    left: 757px;
+    overflow: hidden;
+  }
+  .l3-bg {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 770px;
+    left: 1038px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .section-l3-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 806px;
+    left: 1060px;
+    overflow: hidden;
+  }
+  .row3 {
+    width: 90%;
+    height: 352px;
+    background: rgba(238,217,196,0.4000000059604645);
+    opacity: 1;
+    position: absolute;
+    top: 1094px;
+    left: 102px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    overflow: hidden;
+  }
+  .l2-bg {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 1133px;
+    left: 438px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .l1-bg {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 1135px;
+    left: 135px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  
+  .l31-bg {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 1135px;
+    left: 745px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .section-l1 {
+    width: 106px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1368px;
+    left: 222px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .section-l2 {
+    width: 110px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1368px;
+    left: 523px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  .section-l1-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 1171px;
+    left: 158px;
+    overflow: hidden;
+  }
+  .section-l2-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 1171px;
+    left: 461px;
+    overflow: hidden;
+  }
+  .section-l31-box {
+    width: 235px;
+    height: 184px;
+    background: url("../images/v211_1809.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 1171px;
+    left: 767px;
+    overflow: hidden;
+  }
+  .section-l3-1 {
+    width: 110px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1368px;
+    left: 830px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .section-l3-2 {
+    width: 110px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1368px;
+    left: 1137px;
+    font-family: Outfit;
+    font-weight: Regular;
+    font-size: 24px;
+    opacity: 1;
+    text-align: center;
+  }
+  .section-l3-1-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 1171px;
+    left: 767px;
+    overflow: hidden;
+  }
+  .section-l-3 {
+    width: 280px;
+    height: 280px;
+    background: rgba(255,255,255,1);
+    opacity: 0.5;
+    position: absolute;
+    top: 1135px;
+    left: 1048px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .section-l3-2-box {
+    width: 235px;
+    height: 184px;
+    background: url("pictures/calculator.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 1171px;
+    left: 1070px;
+    overflow: hidden;
+  }
+  .profile {
+    width: 60px;
+    height: 60px;
+    background: url("pictures/profile.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 23px;
+    left: 1339px;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    overflow: hidden;
+  }
+  
