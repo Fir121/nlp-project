@@ -5,3 +5,4 @@
 *.doc
 *.zip
 .venv
+flask_session

@@ -22,7 +22,7 @@ import sqlite3
 import hashlib
 
 # Function to create a connection to the database
-def create_connection(db_file):
+def create_connection(db_file="database.db"):
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -144,7 +144,9 @@ def login(conn, email, password):
         cursor.execute(sql)
         row = cursor.fetchone()
         if row:
-            return row[0]
+            sql = f"SELECT UserID, IsTeacher FROM Users WHERE UserID = {row[0]}"
+            cursor.execute(sql)
+            return cursor.fetchone()
         else:
             return None
     except sqlite3.Error as e:

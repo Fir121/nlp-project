@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, abort
+from flask import Flask, request, jsonify, render_template, abort, session, redirect, flash
 from flask_session import Session
 import backendfunctions as bf
 
@@ -27,7 +27,17 @@ def login():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    abort(500)
+    res = bf.login(bf.create_connection(), email, password)
+    if res is None:
+        flash("Invalid email or password")
+        return redirect('/login')
+    
+    session["userid"] = res[0]
+    session["isteacher"] = res[1]
+
+    if session["isteacher"]:
+        return redirect('/teacher/dashboard')
+    return redirect('/student/dashboard')
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
@@ -37,16 +47,29 @@ def signup():
     email = request.form.get('email')
     password = request.form.get('password')
     repassword = request.form.get('repassword')
-    teacher_or_student = request.form.get('selectedtoggle')
+    isteacher = True if request.form.get('selectedtoggle') == "teacher" else False
 
-    abort(500)
+    res = bf.signup(bf.create_connection(), name, email, password, repassword, isteacher)
+    if res is None:
+        abort(500)
+
+    session["userid"] = res
+    session["isteacher"] = isteacher
+
+    if isteacher:
+        return redirect('/teacher/dashboard')
+    return redirect('/student/dashboard')
 
 @app.route("/teacher/dashboard")
 def teacher_home():
+    if not session.get("isteacher"):
+        return redirect('/')
     return render_template('teacher/index.html')
 
 @app.route("/student/dashboard")
 def student_home():
+    if session.get("isteacher"):
+        return redirect('/')
     return render_template('student/index.html')
 
 @app.route("/student/page2")
