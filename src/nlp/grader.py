@@ -9,14 +9,14 @@ import uuid
 
 def generate_html_page(score):
     fpath = f"{uuid.uuid4()}.html"
-    html_content = '<!DOCTYPE html><html lang="en"><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Evaluation Report</title>    <style>        table {            font-family: Arial, sans-serif;            border-collapse: collapse;            width: 100%;        }                th, td {            border: 1px solid #dddddd;            text-align: left;            padding: 8px;        }                th {            background-color: #f2f2f2;        }    </style></head><body>    <h2>Evaluation Report</h2>    <table>        <thead>            <tr>                <th>Accuracy</th>                <th>organization</th>                <th>Grammar</th>                <th>Vocabulary</th>                <th>Punctuation</th>                <th>Relevance</th>                <th>Final Grade</th>                <th>Remark</th>            </tr>        </thead>        <tbody>'
 
-    html_content += '<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>'.format(score['accuracy'], score['organization'], score['grammar'], score['vocabulary'], score['punctuation'],score['relevance'], score['final_grade'], score['remark'])
-
-    html_content += "</tbody></table></body></html>"
+    fstr = f"<tr><td>{score['accuracy']}</td><td>{score['organization']}</td><td>{score['grammar']}</td><td>{score['vocabulary']}</td><td>{score['punctuation']}</td><td>{score['relevance']}</td><td>{score['spelling']}</td><td>{score['Final Grade']}</td></tr>"
 
     with open("static/data/"+fpath, 'w') as file:
-        file.write(html_content)
+        file.write('<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Evaluation Report</title><style>table {font-family: Arial, sans-serif;border-collapse: collapse;width: 100%;} th, td {border: 1px solid #dddddd;text-align: left;padding: 8px;} th {background-color: #f2f2f2;}</style></head><body><h2>Evaluation Report</h2><table><thead><tr><th>Accuracy</th><th>organization</th><th>Grammar</th><th>Vocabulary</th><th>Punctuation</th><th>Relevance</th><th>Spelling</th><th>Final Grade</th></tr></thead><tbody>'
+                     + fstr                 
+                     + "</tbody></table></body></html>"
+                     )
     
     return fpath
 
@@ -31,6 +31,8 @@ def grader(question,ref_ans,answer):
                  )
     for key in final:
         final[key] = round(final[key],2)
+    final["Final Grade"] = round(sum(final.values())/7, 2)
     print(final)
     path = generate_html_page(final)
-    return path, round(sum(final.values())/7, 2)
+    print(path)
+    return path, final["Final Grade"]

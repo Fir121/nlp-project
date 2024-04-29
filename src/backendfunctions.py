@@ -269,7 +269,7 @@ def get_completed_assignments(conn, course_id, student_id):
             sql = f"SELECT AVG(Score) FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {row[0]})"
             cursor.execute(sql)
             score = cursor.fetchone()
-            row.append(score[0])
+            row.append(round(float(score[0]),2))
         return rows
     except sqlite3.Error as e:
         print(e)
@@ -303,10 +303,10 @@ import uuid
 def zip_all_reports(reportpathlist):
     if len(reportpathlist) == 1:
         return reportpathlist[0]
-    path = f'static/data/{uuid.uuid4()}.zip'
-    with zipfile.ZipFile(path, 'w') as z:
+    path = f'{uuid.uuid4()}.zip'
+    with zipfile.ZipFile("static/data/"+path, 'w') as z:
         for reportpath in reportpathlist:
-            z.write("static/data/"+reportpath)
+            z.write("static/data/"+reportpath, reportpath)
     return path
 
 
