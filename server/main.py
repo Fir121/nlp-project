@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import bcrypt
 import uuid
 
@@ -15,8 +15,23 @@ users = [{
 def hash_password(password):
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
-@app.route('/login', methods=['POST'])
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/pricing')
+def pricing():
+    return render_template('pricing.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+@app.route('/login', methods=['GET','POST'])
 def login():
+    if request.method == 'GET':
+        return render_template('login.html')
+    
     data = request.json
     email = data.get('email')
     password = data.get('password')
@@ -36,8 +51,10 @@ def login():
     else:
         return jsonify({"error": "Invalid email or password"}), 401
 
-@app.route('/signup', methods=['POST'])
+@app.route('/signup', methods=['GET','POST'])
 def signup():
+    if request.method == 'GET':
+        return render_template('signup.html')
     data = request.json
     name = data.get('name')
     email = data.get('email')
