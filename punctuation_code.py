@@ -2,7 +2,7 @@ from deepmultilingualpunctuation import PunctuationModel
 import string
 
 model = PunctuationModel()
-text = "Rajdeep likes fish eggs, chicken and salmon"
+text = "Rajdeep likes fish.,? eggs, chicken& and salmon"
 
 # Function to count punctuation marks in a text
 def count_punctuation(text):
