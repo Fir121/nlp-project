@@ -264,6 +264,7 @@ def get_completed_assignments(conn, course_id, student_id):
         cursor = conn.cursor()
         cursor.execute(sql)
         rows = cursor.fetchall()
+        rows = [list(row) for row in rows]
         for row in rows:
             sql = f"SELECT AVG(Score) FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {row[0]})"
             cursor.execute(sql)
@@ -280,6 +281,7 @@ def get_all_reports(conn, assignment_id, student_id):
         cursor = conn.cursor()
         cursor.execute(sql)
         rows = cursor.fetchall()
+        rows = [row[0] for row in rows]
         return rows
     except sqlite3.Error as e:
         print(e)

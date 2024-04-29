@@ -17,7 +17,7 @@ def puncscore(text):
     else:
         words_in_sentence = len(text.split())
         punctuation_score = original_punctuation_count / words_in_sentence
-    return punctuation_score
+    return min(punctuation_score, 1)
 
 """
 # Restore punctuation in the text

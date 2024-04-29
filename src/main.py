@@ -108,7 +108,8 @@ def student_course(courseid):
     incompleteassignments = bf.get_incomplete_assignments(bf.create_connection(), courseid, session.get("userid"))
     completeassignments = bf.get_completed_assignments(bf.create_connection(), courseid, session.get("userid"))
     for assignment in completeassignments:
-        assignment.append(bf.zip_all_reports(bf.get_all_reports(bf.create_connection(), assignment[0], session.get("userid"))))
+        reports = bf.get_all_reports(bf.create_connection(), assignment[0], session.get("userid"))
+        assignment.append(bf.zip_all_reports(reports))
     return render_template('student/page2.html', incompleteassignments=incompleteassignments, completeassignments=completeassignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
 
 @app.route("/student/assignment/<int:assignmentid>", methods=['GET','POST'])
@@ -135,4 +136,4 @@ def path(path):
     return send_from_directory('static/data', path)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
