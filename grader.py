@@ -1,14 +1,16 @@
-import accuracy,relevance,organization,coherence
+import accuracy, relevance, organization, punctuation_code, spelling_code, vocabulary_code, grammar_code
+
 
 def grader(question,ref_ans,answer):
     final = dict(accuracy = accuracy.accuracy(ref_ans,answer),
                  relevance = relevance.relevance(question,ref_ans,answer),
                  organization = organization.organization(answer),
-                 coherence = coherence.coherence(ref_ans,answer))
-
+                 punctuation = punctuation_code.count_punctuation(answer),
+                 grammar = grammar_code.calculate_grammar_score(answer, ref_ans),
+                 spelling = spelling_code.calculate_spelling_score(answer),
+                 vocabulary = vocabulary_code.calculate_vocabulary_score(answer)
+                 )
     return final
-
-
 
 
 #Testset
