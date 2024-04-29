@@ -247,6 +247,54 @@ def get_assignments(conn, course_id):
         print(e)
         return None
 
+def get_incomplete_assignments(conn, course_id, student_id):
+    try:
+        sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id} AND AssignmentID NOT IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = {student_id}))"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        return rows
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
+def get_completed_assignments(conn, course_id, student_id):
+    try:
+        sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id} AND AssignmentID IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = {student_id}))"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        for row in rows:
+            sql = f"SELECT AVG(Score) FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {row[0]})"
+            cursor.execute(sql)
+            score = cursor.fetchone()
+            row.append(score[0])
+        return rows
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
+def get_all_reports(conn, assignment_id, student_id):
+    try:
+        sql = f"SELECT ReportPath FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {assignment_id})"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        return rows
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
+import zipfile
+import uuid
+def zip_all_reports(reportpathlist):
+    path = f'static/data/{uuid.uuid4()}.zip'
+    with zipfile.ZipFile(path, 'w') as z:
+        for reportpath in reportpathlist:
+            z.write("static/data/"+reportpath)
+    return path
+
+
 def get_assignment_details(conn, assignment_id):
     try:
         sql = f"SELECT Name, CourseID FROM Assignments WHERE AssignmentID = {assignment_id}"

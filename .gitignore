@@ -6,3 +6,4 @@
 *.zip
 .venv
 flask_session
+*data/*

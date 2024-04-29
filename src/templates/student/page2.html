@@ -44,9 +44,10 @@
           style="
             font-size: 32px;
             margin-bottom: 20px;
+            color: rgba(2, 118, 0, 0.7);
           "
         >
-          Assesment List
+          Active & Upcoming Assessments
         </h3>
         <div class="table-outside">
           <table style="border-collapse: separate; border-spacing: 0 10px">
@@ -54,7 +55,6 @@
               <div id="exp">
                 <tr style="margin-bottom: 5px">
                   <th>Name</th>
-                  <th>Code</th>
                   <th>Section</th>
                   <th>Due Date</th>
                   <th>Submissions</th>
@@ -62,7 +62,7 @@
               </div>
             </thead>
             <tbody>
-              {% for assignment in assignments %}
+              {% for assignment in incompleteassignments %}
               <tr>
                 <td>
                   <a
@@ -71,7 +71,6 @@
                     >{{assignment[1]}}
                   </a>
                 </td>
-                <td>{{assignment[0]}}</td>
                 <td>{{assignment[2]}}</td>
                 <td>{{assignment[3]}}</td>
               </tr>
@@ -79,6 +78,44 @@
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section class="assessment-list">
+        <h3
+          style="
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: rgba(169, 0, 0, 0.7);
+          "
+        >
+          Completed Assessments
+        </h3>
+        <table style="border-collapse: separate; border-spacing: 0 10px">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Section</th>
+              <th>Due Date</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for assignment in completeassignments %}
+              <tr>
+                <td>
+                  <a
+                    href="/reportpath/{{assignment[5]}}"
+                    style="cursor: pointer; text-decoration: none; color: black"
+                    >{{assignment[1]}}
+                  </a>
+                </td>
+                <td>{{assignment[2]}}</td>
+                <td>{{assignment[3]}}</td>
+                <td>{{assignment[4]}}/100</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
       </section>
     </div>
   </body>

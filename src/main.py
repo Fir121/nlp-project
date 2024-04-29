@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, abort, session, redirect, flash
+from flask import Flask, request, jsonify, render_template, abort, session, redirect, flash, send_from_directory
 from flask_session import Session
 import backendfunctions as bf
 
@@ -104,8 +104,11 @@ def student_home():
 def student_course(courseid):
     if session.get("isteacher"):
         return redirect('/')
-    assignments = bf.get_assignments(bf.create_connection(), courseid)
-    return render_template('student/page2.html', assignments=assignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
+    incompleteassignments = bf.get_incomplete_assignments(bf.create_connection(), courseid, session.get("userid"))
+    completeassignments = bf.get_completed_assignments(bf.create_connection(), courseid, session.get("userid"))
+    for assignment in completeassignments:
+        assignment.append(bf.zip_all_reports(bf.get_all_reports(bf.create_connection(), assignment[0], session.get("userid"))))
+    return render_template('student/page2.html', incompleteassignments=incompleteassignments, completeassignments=completeassignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
 
 @app.route("/student/assignment/<int:assignmentid>", methods=['GET','POST'])
 def student_assignment(assignmentid):
@@ -119,7 +122,15 @@ def student_assignment(assignmentid):
         res = bf.make_submission(bf.create_connection(), answer[0], session.get("userid"), answer[1])
         if res is None:
             abort(500)
+        # here put nlp function that judges submission
+        res2 = bf.store_report(bf.create_connection(), res, xxx, xxx)
+        if res2 is None:
+            abort(500)
     return redirect(f'/student/dashboard')
+
+@app.route("/reportpath/<path:path>")
+def path(path):
+    return send_from_directory('static/data', path)
 
 if __name__ == '__main__':
     app.run(debug=True)
