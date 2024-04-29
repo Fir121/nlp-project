@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dash</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+    </style>
+    <link rel="stylesheet" href="{{url_for('static', filename='teacher.css')}}" />
+  </head>
+  <body>
+    <header>
+      <div class="left">
+        <a href="/" id="yes" style="height: 70px">
+          <img id="gradescale" src="{{url_for('static', filename='logo.png')}}" alt="Logo" />
+        </a>
+        <div class="header-content">
+          <h1>GradeScale</h1>
+          <h2>Grading. Evolved.</h2>
+        </div>
+      </div>
+      <input
+        type="text"
+        id="unnecessary"
+        placeholder="Search For Courses, Tools, Settings, Or Anything!"
+      />
+      <div id="buttons">
+        <img
+          src="{{url_for('static', filename='User 1.png')}}"
+          alt="profile-picture"
+          id="profile-picture"
+          style="width: 50px; aspect-ratio: 1/1; margin: 10px"
+        />
+      </div>
+    </header>
+    <div id="container">
+      <h1 style="margin: 20px; margin-top: 40px; font-size:45px;">Hello! Student</h1>
+      <div class="section-cards">
+        <div class="subjects">
+          <h2>Courses</h2>
+          <div class="cards-container" id="TOC">
+            
+            {% for course in courses %}
+            <div>
+              <a href="/student/course/{{course[0]}}" style="text-decoration: none; color: black;">
+                <img src="{{url_for('static', filename='calculator.png')}}" />
+                <h3>{{course[1]}}</h3></a>
+            </div>
+            {% endfor %}
+            <div class="view-list">
+              <img src="{{url_for('static', filename='image 3.png')}}" />
+              <h3>View As List</h3>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
