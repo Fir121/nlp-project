@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, render_template, abort, session, redirect, flash, send_from_directory
 from flask_session import Session
 import backendfunctions as bf
+from nlp.grader import grader
 
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -122,8 +123,9 @@ def student_assignment(assignmentid):
         res = bf.make_submission(bf.create_connection(), answer[0], session.get("userid"), answer[1])
         if res is None:
             abort(500)
-        # here put nlp function that judges submission
-        res2 = bf.store_report(bf.create_connection(), res, xxx, xxx)
+        question = bf.get_question(bf.create_connection(), answer[0])
+        path,score = grader(question[0], question[1], answer[1])
+        res2 = bf.store_report(bf.create_connection(), res, path, score)
         if res2 is None:
             abort(500)
     return redirect(f'/student/dashboard')
@@ -133,4 +135,4 @@ def path(path):
     return send_from_directory('static/data', path)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

@@ -285,9 +285,22 @@ def get_all_reports(conn, assignment_id, student_id):
         print(e)
         return None
 
+def get_question(conn, questionid):
+    try:
+        sql = f"SELECT Question, Answer FROM Questions WHERE QuestionID = {questionid}"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
 import zipfile
 import uuid
 def zip_all_reports(reportpathlist):
+    if len(reportpathlist) == 1:
+        return reportpathlist[0]
     path = f'static/data/{uuid.uuid4()}.zip'
     with zipfile.ZipFile(path, 'w') as z:
         for reportpath in reportpathlist:
