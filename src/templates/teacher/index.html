@@ -35,49 +35,18 @@
       </div>
     </header>
     <div id="container">
-      <h1 style="margin: 20px; margin-top: 40px; font-size:45px;">Hello! Dr. Elakkiya R</h1>
+      <h1 style="margin: 20px; margin-top: 40px; font-size:45px;">Hello! {{session["name"]}}</h1>
       <div class="section-cards">
         <div class="subjects">
           <h2>Courses</h2>
           <div class="cards-container" id="TOC">
-            
-            <div id="TOC-section-1">
-              <a href="../nlp-assessment-list/index.html" style="text-decoration: none; color: black;">
+            {% for course in courses %}
+            <div>
+              <a href="/teacher/course/{{course[0]}}" style="text-decoration: none; color: black;">
                 <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L1</h3></a>
+                <h3>{{course[1]}}</h3></a>
             </div>
-            <div id="TOC-section-2">
-              <img src="{{url_for('static', filename='calculator.png')}}" />
-              <h3>Section L2</h3>
-            </div>
-            <div id="TOC-section-3">
-              <img src="{{url_for('static', filename='calculator.png')}}" />
-              <h3>Section L3</h3>
-            </div>
-            <div id="TOC-section-3">
-                <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L3</h3>
-              </div>
-              <div id="TOC-section-3">
-                <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L3</h3>
-              </div>
-              <div id="TOC-section-3">
-                <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L3</h3>
-              </div>
-              <div id="TOC-section-3">
-                <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L3</h3>
-              </div>
-              <div id="TOC-section-3">
-                <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L3</h3>
-              </div>
-              <div id="TOC-section-3">
-                <img src="{{url_for('static', filename='calculator.png')}}" />
-                <h3>Section L3</h3>
-              </div>
+            {% endfor %}
             <div class="view-list">
               <img src="{{url_for('static', filename='image 3.png')}}" />
               <h3>View As List</h3>

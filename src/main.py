@@ -34,6 +34,7 @@ def login():
     
     session["userid"] = res[0]
     session["isteacher"] = res[1]
+    session["name"] = res[2]
 
     if session["isteacher"]:
         return redirect('/teacher/dashboard')
@@ -55,6 +56,7 @@ def signup():
 
     session["userid"] = res
     session["isteacher"] = isteacher
+    session["name"] = name
 
     if isteacher:
         return redirect('/teacher/dashboard')
@@ -64,17 +66,39 @@ def signup():
 def teacher_home():
     if not session.get("isteacher"):
         return redirect('/')
-    return render_template('teacher/index.html')
+    courses = bf.get_courses(bf.create_connection(), session.get("userid"))
+    return render_template('teacher/index.html', courses=courses)
+
+@app.route("/teacher/course/<int:courseid>")
+def teacher_course(courseid):
+    if not session.get("isteacher"):
+        return redirect('/')
+    assignments = bf.get_assignments(bf.create_connection(), courseid)
+    return render_template('teacher/page2.html', assignments=assignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
+
+@app.route("/teacher/addquestion/<int:assignmentid>", methods=['GET','POST'])
+def teacher_addquestion(assignmentid):
+    if not session.get("isteacher"):
+        return redirect('/')
+    if request.method == 'GET':
+        assigmentdetails = bf.get_assignment_details(bf.create_connection(), assignmentid)
+        questions = bf.get_questions(bf.create_connection(), assignmentid)
+        return render_template('teacher/page3.html', assignmentname=assigmentdetails[0], coursename=bf.get_course_name(bf.create_connection(), assigmentdetails[1]), assignmentid=assignmentid, questions=questions)
+    questions = request.json
+    bf.delete_all_questions(bf.create_connection(), assignmentid)
+    for question in questions:
+        res = bf.add_question_to_assignment(bf.create_connection(), assignmentid, question[0], question[1])
+        if res is None:
+            abort(500)
+
+    return redirect(f'/teacher/dashboard')
 
 @app.route("/student/dashboard")
 def student_home():
     if session.get("isteacher"):
         return redirect('/')
-    return render_template('student/index.html')
-
-@app.route("/student/page2")
-def student_page2():
-    return render_template('student/page2.html')
+    courses = bf.get_student_courses(bf.create_connection(), session.get("userid"))
+    return render_template('student/index.html', courses=courses)
 
 if __name__ == '__main__':
     app.run(debug=True)

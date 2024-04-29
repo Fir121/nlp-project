@@ -144,7 +144,7 @@ def login(conn, email, password):
         cursor.execute(sql)
         row = cursor.fetchone()
         if row:
-            sql = f"SELECT UserID, IsTeacher FROM Users WHERE UserID = {row[0]}"
+            sql = f"SELECT UserID, IsTeacher, name FROM Users WHERE UserID = {row[0]}"
             cursor.execute(sql)
             return cursor.fetchone()
         else:
@@ -201,6 +201,17 @@ def add_question_to_assignment(conn, assignment_id, question, answer):
         print(e)
         return None
 
+def get_course_name(conn, course_id):
+    try:
+        sql = f"SELECT CourseName FROM Courses WHERE CourseID = {course_id}"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row[0]
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
 # Function to get courses of a user
 def get_courses(conn, user_id):
     try:
@@ -213,8 +224,19 @@ def get_courses(conn, user_id):
         print(e)
         return None
 
+def get_student_courses(conn, user_id):
+    try:
+        sql = f"SELECT CourseID, CourseName FROM Courses WHERE CourseID IN (SELECT CourseID FROM Enrollments WHERE StudentUserID = {user_id})"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        return rows
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
 # Function to get assignments of a course
-def get_assignments(conn, user_id, course_id):
+def get_assignments(conn, course_id):
     try:
         sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id}"
         cursor = conn.cursor()
@@ -225,6 +247,28 @@ def get_assignments(conn, user_id, course_id):
         print(e)
         return None
 
+def get_assignment_details(conn, assignment_id):
+    try:
+        sql = f"SELECT Name, CourseID FROM Assignments WHERE AssignmentID = {assignment_id}"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
+def delete_all_questions(conn, assignment_id):
+    try:
+        sql = f"DELETE FROM Questions WHERE AssignmentID = {assignment_id}"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        conn.commit()
+        return True
+    except sqlite3.Error as e:
+        print(e)
+        return False
+    
 # Function to get questions of an assignment
 def get_questions(conn, assignment_id):
     try:
