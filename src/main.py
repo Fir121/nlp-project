@@ -1,6 +1,11 @@
 from flask import Flask, request, jsonify, render_template, abort
+from flask_session import Session
+import backendfunctions as bf
 
 app = Flask(__name__)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SECRET_KEY'] = "asdoiu8013uKHDBF91"
+Session(app)
 
 @app.route('/')
 def index():
