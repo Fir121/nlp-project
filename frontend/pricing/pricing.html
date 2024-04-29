@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GradeScale</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bs-brain@2.0.3/components/pricings/pricing-2/assets/css/pricing-2.css"
+    />
+    <link rel="stylesheet" href="./pricing.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="left">
+        <a href="../gradescale.html" id="yes" style="height: 70px">
+          <img id="gradescale" src="../pictures/logo.png" alt="Logo" />
+        </a>
+        <div class="header-content">
+          <h1>GradeScale</h1>
+          <h2>Grading. Evolved.</h2>
+        </div>
+      </div>
+      <div id="buttons">
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="../signup.html">Sign Up</a></li>
+          <li><a href="../login.html">Login</a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <div class="container" style="margin-top: 120px">
+      <div class="intro-text">
+        <h1>
+          We offer great <span style="color: #764f29">price</span> plan for the
+          <br />application
+        </h1>
+      </div>
+      <div class="switch-wrapper shadow">
+        <input id="monthly" type="radio" name="switch" checked />
+        <input id="yearly" type="radio" name="switch" />
+        <label for="monthly">Monthly</label>
+        <label for="yearly">Yearly</label>
+        <span class="highlighter"></span>
+      </div>
+    </div>
+    <!-- Pricing Table -->
+    <div class="fulltable">
+      <div class="recommend">
+        <div class="empty"></div>
+        <div class="recommended">Recommended</div>
+      </div>
+      <div class="pricingtable">
+        <div class="starter">
+          <h2>Starter Plan</h2>
+          <p>4 teachers</p>
+          <p>(4 classrooms each)</p>
+          <p>40 students</p>
+          <h2 style="font-size: 40px; font-weight: 600">Free</h2>
+          <br /><br />
+          <button class="get-started">Get Started</button>
+        </div>
+        <div class="basic">
+          <h2>Basic Plan</h2>
+          <p>40 teachers</p>
+          <p>(4 classrooms each)</p>
+          <p>Unlimited students</p>
+          <div class="price monthly">
+            <h3>
+              $<span style="font-size: 40px; font-weight: 600">40</span>/ month
+            </h3>
+            <br />
+            <br />
+          </div>
+          <div class="price yearly hide">
+            <h3 class="price yearly hide">
+              $<span style="font-size: 40px; font-weight: 600">32</span>/ month
+            </h3>
+            <p>billed annually</p>
+          </div>
+          <button class="get-started" id="special1">Get Started</button>
+        </div>
+        <div class="premium">
+          <h2>Premium Plan</h2>
+          <p>80 teachers</p>
+          <p>(8 classrooms each)</p>
+          <p>Unlimited students</p>
+          <div class="price monthly">
+            <h3>
+              $<span style="font-size: 40px; font-weight: 600">80</span>/ month
+            </h3>
+            <br />
+            <br />
+          </div>
+
+          <div class="price yearly hide">
+            <h3>
+              $<span style="font-size: 40px; font-weight: 600">56</span>/ month
+            </h3>
+            <p>billed annually</p>
+          </div>
+
+          <button class="get-started">Get Started</button>
+        </div>
+        <div class="custom">
+          <h2>
+            Custom Plan <br />
+            <br />
+          </h2>
+          <p>
+            Tell us your requirements, and we'll create a plan just for you.
+          </p>
+
+          <h1 style="font-size: 40px; font-weight: 600">Custom</h1>
+          <br />
+          <br />
+          <button class="contact-sales">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+    <!-- Footer Section -->
+    <div class="footer-container">
+      <div class="footer-links">
+        <div class="footer-link">About us</div>
+        <div class="footer-link">Help Center</div>
+        <div class="footer-link">Support Line</div>
+        <div class="footer-link">Technology Used</div>
+
+        <div class="footer-link">Contact us</div>
+        <div class="footer-link">Teachers</div>
+        <div class="footer-link">Press</div>
+        <div class="footer-link">Pricing</div>
+      </div>
+      <div class="copyright">© GradeScale 2024</div>
+    </div>
+    <script type="module" src="./App.js"></script>
+  </body>
+</html>

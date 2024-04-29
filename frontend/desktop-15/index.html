@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+    </style>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="left">
+        <a href="../gradescale.html" id="yes" style="height: 70px">
+          <img id="gradescale" src="../pictures/logo.png" alt="Logo" />
+        </a>
+        <div class="header-content">
+          <h1>GradeScale</h1>
+          <h2>Grading. Evolved.</h2>
+        </div>
+      </div>
+      <input
+        type="text"
+        id="unnecessary"
+        placeholder="Search For Courses, Tools, Settings, Or Anything!"
+      />
+      <div id="buttons">
+        <a href="../Teacher-Dash/teacher.html"
+          ><img
+            src="../pictures/User 1.png"
+            alt="profile-picture"
+            id="profile-picture"
+            style="width: 50px; aspect-ratio: 1/1; margin: 10px"
+        /></a>
+      </div>
+    </header>
+    <!-- Quiz Details -->
+    <div
+      class="top-container"
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 30px;
+      "
+    >
+      <div id="left">
+        <h1 style="font-size: 38px">Quiz 1</h1>
+        <h4>Subject: Natural Language Processing</h4>
+        <h4>
+          Section: <button>L1</button> <button>L2</button> <button>L3</button>
+        </h4>
+      </div>
+      <div id="right" style="display: flex; align-items: center">
+        <h4>Test Duration:</h4>
+        <input type="number" />
+        <input type="number" />
+        <h4>:</h4>
+        <input type="number" />
+        <input type="number" />
+        <h4>:</h4>
+        <input type="number" />
+        <input type="number" />
+      </div>
+    </div>
+    <!-- Question Container -->
+    <div class="container">
+      <p style="font-size: 16px; font-weight: 600; color: rgba(169, 0, 0, 0.7)">
+        Note: Remember to add in the model answer after each question!
+      </p>
+      <h2 class="questions-heading">Question 1</h2>
+      <h3 class="questions">
+        <input
+          type="text"
+          value="Explain the concept of tokenization in Natural Language Processing"
+        />
+      </h3>
+
+      <div class="answer-box-box">
+        <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">
+Tokenization is a fundamental process in Natural Language Processing (NLP) where a text is divided into smaller units called tokens. These tokens could be words, phrases, symbols, or any other meaningful unit of language. The main goal of tokenization is to break down a piece of text into individual components that can be easily processed by a computer algorithm. For example, consider the sentence "The quick brown fox jumps over the lazy dog." Tokenization of this sentence would result in tokens like "The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog". Tokenization helps in various NLP tasks such as text classification, named entity recognition, and sentiment analysis by providing structured input data for further analysis and processing.</textarea
+        >
+      </div>
+      <h2 class="questions-heading">Question 2</h2>
+      <h3 class="questions">
+        <input
+          type="text"
+          value="Explain the concept of tokenization in Natural Language Processing"
+        />
+      </h3>
+
+      <div class="answer-box-box">
+        <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">
+  Tokenization is a fundamental process in Natural Language Processing (NLP) where a text is divided into smaller units called tokens. These tokens could be words, phrases, symbols, or any other meaningful unit of language. The main goal of tokenization is to break down a piece of text into individual components that can be easily processed by a computer algorithm. For example, consider the sentence "The quick brown fox jumps over the lazy dog." Tokenization of this sentence would result in tokens like "The", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog". Tokenization helps in various NLP tasks such as text classification, named entity recognition, and sentiment analysis by providing structured input data for further analysis and processing.</textarea
+        >
+      </div>
+    </div>
+    <button id="add-question"><img src="./+.png" alt="add-button" /></button>
+  </body>
+</html>
