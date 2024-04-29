@@ -100,5 +100,26 @@ def student_home():
     courses = bf.get_student_courses(bf.create_connection(), session.get("userid"))
     return render_template('student/index.html', courses=courses)
 
+@app.route("/student/course/<int:courseid>")
+def student_course(courseid):
+    if session.get("isteacher"):
+        return redirect('/')
+    assignments = bf.get_assignments(bf.create_connection(), courseid)
+    return render_template('student/page2.html', assignments=assignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
+
+@app.route("/student/assignment/<int:assignmentid>", methods=['GET','POST'])
+def student_assignment(assignmentid):
+    if session.get("isteacher"):
+        return redirect('/')
+    if request.method == 'GET':
+        questions = bf.get_questions(bf.create_connection(), assignmentid)
+        return render_template('student/page3.html', questions=questions, assignmentid=assignmentid)
+    answers = request.json
+    for answer in answers:
+        res = bf.make_submission(bf.create_connection(), answer[0], session.get("userid"), answer[1])
+        if res is None:
+            abort(500)
+    return redirect(f'/student/dashboard')
+
 if __name__ == '__main__':
     app.run(debug=True)

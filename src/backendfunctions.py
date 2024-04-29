@@ -282,16 +282,13 @@ def get_questions(conn, assignment_id):
         return None
 
 # Function to make a submission
-def make_submission(conn, assignment_id, user_id, answers_list):
+def make_submission(conn, questionid, user_id, answer):
     try:
-        submission_ids = []
-        for answer in answers_list:
-            sql = f"INSERT INTO Submissions (AssignmentID, UserID, AnswerText) VALUES ({assignment_id}, {user_id}, {answer})"
-            cursor = conn.cursor()
-            cursor.execute(sql)
-            submission_ids.append(cursor.lastrowid)
+        sql = f"INSERT INTO Submissions (QuestionID, UserID, AnswerText) VALUES ({questionid}, {user_id}, '{answer}')"
+        cursor = conn.cursor()
+        cursor.execute(sql)
         conn.commit()
-        return submission_ids
+        return cursor.lastrowid
     except sqlite3.Error as e:
         print(e)
         return None

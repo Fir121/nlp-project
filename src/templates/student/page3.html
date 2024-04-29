@@ -60,10 +60,10 @@
       {% for question in questions %}
         <h2 class="questions-heading">Question {{loop.index}}</h2>
         <h3 class="questions">
-          <input type="text" value="{{question[1]}}" />
+          <input readonly type="text" value="{{question[1]}}" id="{{question[0]}}"/>
         </h3>
         <div class="answer-box-box">
-          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">{{question[2]}}</textarea>
+          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">Answer Here</textarea>
         </div>  
     {% endfor %}
 
@@ -71,57 +71,28 @@
       
     </div>
     <div style="width: 100%;text-align: center;">
-        <button id="save-question" onclick="postRequest()">Save</button>
+        <button id="save-question" onclick="postRequest()">Submit</button>
     </div>
-    <button id="add-question"><img src="{{url_for('static', filename='+.png')}}" alt="add-button" /></button>
   </body>
   <script>
     function postRequest(){
         var questions = document.getElementsByClassName("questions");
         var questionList = [];
         for (var i = 0; i < questions.length; i++){
-            var question = questions[i].getElementsByTagName("input")[0].value;
+            var question = questions[i].getElementsByTagName("input")[0].id;
             var answer = questions[i].nextElementSibling.getElementsByClassName("answer-box")[0].value;
             questionList.push([question, answer]);
         }
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/teacher/addquestion/{{assignmentid}}", true);
+        xhr.open("POST", "/student/assignment/{{assignmentid}}", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify(questionList));
 
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                window.location.href = "/teacher/dashboard";
+                window.location.href = "/student/dashboard";
             }
         }
     }
-  </script>
-  <script>
-    document.getElementById("add-question").addEventListener("click", function () {
-      var questions = document.getElementsByClassName("questions");
-      var lastQuestionNumber = questions.length
-      var newQuestionNumber = lastQuestionNumber + 1;
-      var newQuestion = document.createElement("h2");
-      newQuestion.classList.add("questions-heading");
-      newQuestion.innerText = "Question " + newQuestionNumber;
-      var newQuestionInput = document.createElement("h3");
-      newQuestionInput.classList.add("questions");
-      var newQuestionInputText = document.createElement("input");
-      newQuestionInputText.setAttribute("type", "text");
-      newQuestionInputText.setAttribute("value", "Enter your question here");
-      newQuestionInput.appendChild(newQuestionInputText);
-      var newAnswerBoxBox = document.createElement("div");
-      newAnswerBoxBox.classList.add("answer-box-box");
-      var newAnswerBox = document.createElement("textarea");
-      newAnswerBox.setAttribute("name", "paragraph_text");
-      newAnswerBox.setAttribute("cols", "50");
-      newAnswerBox.setAttribute("rows", "10");
-      newAnswerBox.classList.add("answer-box");
-      newAnswerBox.innerText = "Enter your answer here";
-      newAnswerBoxBox.appendChild(newAnswerBox);
-      document.querySelector(".container").appendChild(newQuestion);
-      document.querySelector(".container").appendChild(newQuestionInput);
-      document.querySelector(".container").appendChild(newAnswerBoxBox);
-    });
   </script>
 </html>
