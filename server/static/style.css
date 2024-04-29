@@ -289,8 +289,13 @@ nav ul li a:hover {
   font-size: px;
   color: #000000;
 }
+
+.paragraph1 > .content > form{
+  text-align: left;
+}
 .email-address-section {
     margin-bottom: 14px;
+    text-align: left;
   }
   
   .email-address-text, .enter-name {
@@ -324,6 +329,11 @@ nav ul li a:hover {
     border-radius: 10px;
 }
 
+.paragraph1 > .content > .login-section > form {
+    text-align: left;
+
+}
+
 /*LOGIN PAGE*/
 .join-container, .button-container  {
     display: flex;
@@ -331,6 +341,7 @@ nav ul li a:hover {
   .join-as-teacher, .submit-button {
     border-radius: 20px;
     background-color: #764F29;
+    color: #fff;
     margin: 0 10px 9px 0; 
     display: flex;
     justify-content: center;
@@ -340,11 +351,13 @@ nav ul li a:hover {
     height: 50px;
     position: relative;
     box-sizing: border-box;
+    border: 0;
   }
 
   .join-as-student, .back-button  {
     border-radius: 20px;
     background-color: #FFFDFD;
+    
     margin: 0 10px 9px 0; 
     display: flex;
     justify-content: center;

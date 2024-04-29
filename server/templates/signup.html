@@ -35,33 +35,57 @@
                 <span>Already Have an Account ?</span>
                 <a href="/login" class="sign-up-button">Log In</a> 
               </div>
+          <form method="post" action="/signup">
               <div class="join-text">Join GradeScale as:</div><br>
               <div class="join-container">
-                <div class="join-as-teacher">
-                  <span class="text-teacher">Teacher</span>
+                <div id="teacher" class="join-as-teacher">
+                  <span id="textteach" class="text-teacher">Teacher</span>
                 </div>
-                <div class="join-as-student">
-                  <span class="text-student">Student</span>
+                <div id="student" class="join-as-student">
+                  <span id="textstud" class="text-student">Student</span>
                 </div>
               </div>
-              <div class="enter-name">Enter Your Name</div>
-              <div class="input-box"></div><br>
+              <input type="text" id="selectedtoggle" name="selectedtoggle" style="opacity:0.1"></input>
+              <script>
+
+                document.getElementById('selectedtoggle').value = 'teacher';
+                document.getElementById('teacher').addEventListener('click', function() {
+                  
+                    document.getElementById('teacher').classList = 'join-as-teacher';
+                    document.getElementById('student').classList = 'join-as-student';
+                    document.getElementById('textteach').classList = 'text-teacher';
+                    document.getElementById('textstud').classList = 'text-student';
+                    document.getElementById('selectedtoggle').value = 'teacher';
+                 
+                });
+                document.getElementById('student').addEventListener('click', function() {
+                  
+                    document.getElementById('teacher').classList = 'join-as-student';
+                    document.getElementById('student').classList = 'join-as-teacher';
+                    document.getElementById('textteach').classList = 'text-student';
+                    document.getElementById('textstud').classList = 'text-teacher';
+                    document.getElementById('selectedtoggle').value = 'student';
+                });
+              </script><br><br>
+              <div class="enter-name">Enter Your Name</div><br><br>
+              <input type="text" class="input-box"></input><br>
               <div class="email-address-section">
                 <div class="email-address-text">Enter Your Email Address</div>
               </div>   
-              <div class="input-box"></div>  
+              <input type="text" class="input-box"></input>  
               <br>       
               <div class="password-section">
                 <div class="password-text">Enter a Password</div>
               </div>
-              <div class="input-box"></div><br>
+              <input type="text" class="input-box"></input><br>
               <div class="password-section">
                 <div class="password-text">Re-enter Your Password</div>
               </div>
-              <div class="input-box"></div><br><br> 
+              <input type="text" class="input-box"></input><br><br> 
               <div class="button-container">
                 <div class="back-button">Back</div><br>
-            <div class="submit-button">Submit</div> 
+            <button class="submit-button">Submit</button> 
+          </form>
               </div>
             </div>        
         </div>
