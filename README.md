@@ -42,7 +42,8 @@ Frontend
   
 Version Control
 * GitHub - for collaborative development, version control, and code review
-* Infrastructure Provisioning and Configuration
+
+Infrastructure Provisioning and Configuration
 * Ansible - for provisioning and configuring infrastructure
   
 Testing
