@@ -49,3 +49,12 @@ Infrastructure Provisioning and Configuration
 Testing
 * Backend Testing: Python's unit test framework for unit testing.
 * Frontend Testing: Selenium WebDriver for automated UI testing.
+
+# Deployment Instructions
+
+1. Sign Up for DigitalOcean: Utilize the free credits available from the GitHub Student Developer Pack to create an account on DigitalOcean.
+2. Create a Droplet: Set up a new Droplet, which is a Virtual Private Server (VPS), on DigitalOcean. Choose the specifications that match your application needs.
+3. Install Python and Packages: Access your Droplet via SSH & install all the necessary Python packages required for the application.
+4. Deploy the Application: Upload the application code to the Droplet. Use the nohup command to run your application code in production mode as a background process. This allows the application to continue running even after you disconnect from the server.
+5. Access the Application: Initially, access your application through the IP address and specific port number provided by the Droplet.
+6. Future Configuration for Domain Name: Once you acquire a domain name, plan to configure it with Nginx on your Droplet to route traffic to your application. This setup will allow you to access the application through a domain name instead of an IP address.
