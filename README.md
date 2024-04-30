@@ -30,26 +30,6 @@ Methodologies for Evaluation Criteria:
 * Relevance: Uses the pre-trained model - 'clips/mfaq' to evaluate the relevance of a student's answer to a specified question to a reference answer. The question, inputted answer, and reference answers are encoded into vector embeddings and their cosine similarities are computed, assessing how closely the student's response aligns with the reference in terms of contextual relevance.
 * Coherence: Uses pre-trained model, aisingapore/coherence-momentum to evaluate the coherence of two pieces of text (the reference answer and the student-inputted answer). The texts are preprocessed and converted into tensor formats suitable for the model, then compute a coherence score for each text, returning these scores as an array.
 
-# Tech Stack 
-
-Backend
-* Framework: Django - for built-in authentication and ORM capabilities
-* Database: MySQL - for storing user authentication data and essay grading information
-  
-Frontend
-* JavaScript Framework: React - for building dynamic user interfaces
-* CSS Framework: Bootstrap - for styling and layout
-  
-Version Control
-* GitHub - for collaborative development, version control, and code review
-
-Infrastructure Provisioning and Configuration
-* Ansible - for provisioning and configuring infrastructure
-  
-Testing
-* Backend Testing: Python's unit test framework for unit testing.
-* Frontend Testing: Selenium WebDriver for automated UI testing.
-
 # Deployment Instructions
 
 1. Sign Up for DigitalOcean: Utilize the free credits available from the GitHub Student Developer Pack to create an account on DigitalOcean.
