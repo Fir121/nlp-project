@@ -96,7 +96,7 @@ def teacher_addquestion(assignmentid):
     questions = request.json
     bf.delete_all_questions(bf.create_connection(), assignmentid)
     for question in questions:
-        res = bf.add_question_to_assignment(bf.create_connection(), assignmentid, question[0], question[1])
+        res = bf.add_question_to_assignment(bf.create_connection(), assignmentid, question[0], question[1], question[2])
         if res is None:
             abort(500)
 

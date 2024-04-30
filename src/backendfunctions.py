@@ -201,9 +201,9 @@ def add_student_to_course(conn, student_user_id, course_id):
         return False
 
 # Function to add a question to an assignment
-def add_question_to_assignment(conn, assignment_id, question, answer):
+def add_question_to_assignment(conn, assignment_id, question, answer, score):
     try:
-        sql = f"INSERT INTO Questions (AssignmentID, Question, Answer) VALUES ({assignment_id}, '{question}', '{answer}')"
+        sql = f"INSERT INTO Questions (AssignmentID, Question, Answer, Score) VALUES ({assignment_id}, '{question}', '{answer}', {score})"
         cursor = conn.cursor()
         cursor.execute(sql)
         conn.commit()
@@ -370,7 +370,7 @@ def delete_all_questions(conn, assignment_id):
 # Function to get questions of an assignment
 def get_questions(conn, assignment_id):
     try:
-        sql = f"SELECT QuestionID, Question, Answer FROM Questions WHERE AssignmentID = {assignment_id}"
+        sql = f"SELECT QuestionID, Question, Answer, Score FROM Questions WHERE AssignmentID = {assignment_id}"
         cursor = conn.cursor()
         cursor.execute(sql)
         rows = cursor.fetchall()
