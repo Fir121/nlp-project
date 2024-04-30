@@ -23,6 +23,10 @@ def terms():
 @app.route('/login', methods=['GET','POST'])
 def login():
     if request.method == 'GET':
+        if session.get("userid") is not None:
+            if session.get("isteacher"):
+                return redirect('/teacher/dashboard')
+            return redirect('/student/dashboard')
         return render_template('login.html')
     
     email = request.form.get('email')
@@ -44,6 +48,10 @@ def login():
 @app.route('/signup', methods=['GET','POST'])
 def signup():
     if request.method == 'GET':
+        if session.get("userid") is not None:
+            if session.get("isteacher"):
+                return redirect('/teacher/dashboard')
+            return redirect('/student/dashboard')
         return render_template('signup.html')
     name = request.form.get('name')
     email = request.form.get('email')
@@ -118,7 +126,8 @@ def student_assignment(assignmentid):
         return redirect('/')
     if request.method == 'GET':
         questions = bf.get_questions(bf.create_connection(), assignmentid)
-        return render_template('student/page3.html', questions=questions, assignmentid=assignmentid)
+        assignment = bf.get_assignment_details(bf.create_connection(), assignmentid)
+        return render_template('student/page3.html', questions=questions, assignmentid=assignmentid, assignmentname=assignment[0], coursename=bf.get_course_name(bf.create_connection(), assignment[1]))
     answers = request.json
     for answer in answers:
         res = bf.make_submission(bf.create_connection(), answer[0], session.get("userid"), answer[1])
@@ -134,6 +143,27 @@ def student_assignment(assignmentid):
 @app.route("/reportpath/<path:path>")
 def path(path):
     return send_from_directory('static/data', path)
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect('/')
+
+@app.route("/dashboard")
+def dashboard():
+    if session.get("isteacher"):
+        return redirect('/teacher/dashboard')
+    return redirect('/student/dashboard')
+
+@app.route("/teacher/addcourse", methods=['POST'])
+def addcourse():
+    if not session.get("isteacher"):
+        return redirect('/')
+    coursename = request.form.get('coursename')
+    res = bf.add_course(bf.create_connection(), session.get("userid"), coursename)
+    if res is None:
+        abort(500)
+    return redirect('/teacher/dashboard')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)

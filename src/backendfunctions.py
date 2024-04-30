@@ -344,6 +344,17 @@ def get_questions(conn, assignment_id):
         print(e)
         return None
 
+def get_assignment(conn, assignment_id):
+    try:
+        sql = f"SELECT CourseID, Name, Section, DueDate FROM Assignments WHERE AssignmentID = {assignment_id}"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
 # Function to make a submission
 def make_submission(conn, questionid, user_id, answer):
     try:

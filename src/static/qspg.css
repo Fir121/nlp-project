@@ -161,3 +161,62 @@ input::-webkit-inner-spin-button {
   margin: 15px;
   cursor: pointer;
 }
+
+/*FOOTER*/
+.footer-container {
+  margin-top: 50px;
+  background-color: #764F29;
+  padding: 20px 30px; 
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.footer-links {
+  margin-bottom: 11px;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  width: auto; 
+  max-width: 100%; 
+  box-sizing: border-box;
+}
+
+.footer-link {
+  margin: 0 10px 10px 0; 
+  width: calc(50% - 10px);
+  font-family: 'Outfit';
+  font-size: 14px; 
+  color: #FFFFFF;
+  text-align: left;
+}
+
+.footer-icons {
+  display: flex;
+  width: auto; 
+  box-sizing: border-box;
+}
+
+.social-icon {
+  background-size: cover;
+  width: 24px; 
+  height: 24px; 
+}
+
+.copyright {
+  margin-top: 10px; 
+  font-family: 'Outfit';
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+
+.logoutbutton{
+  background-color: #ff8c8c;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  float:right;
+  text-decoration: none;
+}

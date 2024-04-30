@@ -13,7 +13,7 @@
     <body>
         <!-- Header Section -->
         <header>
-            <img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
+            <a href="/"><img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo"></a>
             <div class="header-content">
                 <h1>GradeScale</h1>
                 <h2>Grading. Evolved.</h2>
@@ -23,8 +23,13 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/#about-us">About Us</a></li>
                     <li><a href="/pricing">Pricing</a></li>
+                    {% if session.get("userid") == None %}
                     <li><a href="/signup">Sign Up</a></li>
                     <li><a href="/login">Login</a></li>
+                    {% else %}
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/logout" style="color:red">Logout</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>

@@ -1,40 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-    </style>
+{% extends "student/studentlayout.html" %}
+{% block head %}
     <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}" />
-  </head>
-  <body>
-    <header>
-      <div class="left">
-        <a href="/" id="yes" style="height: 70px">
-          <img id="gradescale" src="{{url_for('static', filename='logo.png')}}" alt="Logo" />
-        </a>
-        <div class="header-content">
-          <h1>GradeScale</h1>
-          <h2>Grading. Evolved.</h2>
-        </div>
-      </div>
-      <input
-        type="text"
-        id="unnecessary"
-        placeholder="Search For Courses, Tools, Settings, Or Anything!"
-      />
-      <div id="buttons">
-        <a href="/student/dashboard"
-          ><img
-            src="{{url_for('static', filename='User 1.png')}}"
-            alt="profile-picture"
-            id="profile-picture"
-            style="width: 50px; aspect-ratio: 1/1; margin: 10px"
-        /></a>
-      </div>
-    </header>
+{% endblock %}
+{% block content %}
     <h2 style="font-size: 40px; margin: 20px 0px 20px 50px">
       {{coursename}}
     </h2>
@@ -57,23 +25,16 @@
                   <th>Name</th>
                   <th>Section</th>
                   <th>Due Date</th>
-                  <th>Submissions</th>
                 </tr>
               </div>
             </thead>
             <tbody>
               {% for assignment in incompleteassignments %}
-              <tr>
-                <td>
-                  <a
-                    href="/student/assignment/{{assignment[0]}}"
-                    style="cursor: pointer; text-decoration: none; color: black"
-                    >{{assignment[1]}}
-                  </a>
-                </td>
-                <td>{{assignment[2]}}</td>
-                <td>{{assignment[3]}}</td>
-              </tr>
+                  <tr onclick="window.location.href='/student/assignment/{{assignment[0]}}'" style="cursor: pointer; text-decoration: none; color: black">
+                    <td>{{assignment[1]}}</td>
+                    <td>{{assignment[2]}}</td>
+                    <td>{{assignment[3]}}</td>
+                  </tr>
               {% endfor %}
             </tbody>
           </table>
@@ -101,22 +62,15 @@
           </thead>
           <tbody>
             {% for assignment in completeassignments %}
-              <tr>
-                <td>
-                  <a
-                    href="/reportpath/{{assignment[5]}}"
-                    style="cursor: pointer; text-decoration: none; color: black"
-                    >{{assignment[1]}}
-                  </a>
-                </td>
+              <tr onclick="window.location.href='/reportpath/{{assignment[5]}}'" style="cursor: pointer; text-decoration: none; color: black">
+                <td>{{assignment[1]}}</td>
                 <td>{{assignment[2]}}</td>
                 <td>{{assignment[3]}}</td>
-                <td>{{assignment[4]}}/100</td>
+                <td>{{assignment[4]}}</td>
               </tr>
               {% endfor %}
           </tbody>
         </table>
       </section>
     </div>
-  </body>
-</html>
+{% endblock %}

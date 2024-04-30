@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GradeScale - Student</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+    </style>
+    {% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='teacher.css')}}" />
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="left">
+        <a href="/" id="yes" style="height: 70px">
+          <img id="gradescale" src="{{url_for('static', filename='logo.png')}}" alt="Logo" />
+        </a>
+        <div class="header-content">
+          <h1>GradeScale</h1>
+          <h2>Grading. Evolved.</h2>
+        </div>
+      </div>
+      <div id="buttons">
+        <a href="/student/dashboard">
+            <img
+            src="{{url_for('static', filename='User 1.png')}}"
+            alt="profile-picture"
+            id="profile-picture"
+            style="width: 50px; aspect-ratio: 1/1; margin: 10px"
+            />
+        </a>
+      </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+
+    <div class="footer-container">
+        <a href="/terms" style="text-decoration: none;display: inline-block;"><div class="copyright" style="width:fit-content">© GradeScale 2024</div></a>
+        <a href="/logout" class="logoutbutton">Logout</a>
+    </div>
+  </body>
+</html>
