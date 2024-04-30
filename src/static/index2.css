@@ -52,29 +52,6 @@ header {
   border-radius: 10px;
   color: rgba(0, 0, 0, 0.5);
 }
-
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem;
-  padding: 2rem 4rem; /* Increased padding for better alignment */ /* Set background color for the container */
-}
-
-h2 {
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-.assessment-list {
-  margin-bottom: 2rem;
-}
-
 table {
   border-radius: 10px;
   width: 100%;
@@ -113,11 +90,18 @@ table tbody {
   margin-bottom: 5px;
 }
 table tbody tr :nth-child(1) {
+  width: 60%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
-table tbody tr :nth-child(5) {
-  width: 70px;
+table tbody tr :nth-child(2) {
+  width: 15%;
+}
+table tbody tr :nth-child(3) {
+  width: 10%;
+}
+table tbody tr :nth-child(4) {
+  width: 15%;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }

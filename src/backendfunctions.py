@@ -177,10 +177,21 @@ def add_assignment(conn, course_id, name, section, due_date):
         print(e)
         return None
 
+def get_student_user_id(conn, email):
+    try:
+        sql = f"SELECT UserID FROM Users WHERE Email = '{email}' and IsTeacher = 0"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        return row[0]
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
 # Function to add a student to a course
 def add_student_to_course(conn, student_user_id, course_id):
     try:
-        sql = f"INSERT INTO Enrollments (UserID, CourseID) VALUES ({student_user_id}, {course_id})"
+        sql = f"INSERT INTO Enrollments (StudentUserID, CourseID) VALUES ({student_user_id}, {course_id})"
         cursor = conn.cursor()
         cursor.execute(sql)
         conn.commit()
@@ -197,6 +208,30 @@ def add_question_to_assignment(conn, assignment_id, question, answer):
         cursor.execute(sql)
         conn.commit()
         return cursor.lastrowid
+    except sqlite3.Error as e:
+        print(e)
+        return None
+    
+def get_students(conn, course_id):
+    try:
+        sql = f"SELECT UserID, Name, Email FROM Users WHERE UserID IN (SELECT StudentUserID FROM Enrollments WHERE CourseID = {course_id})"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        rows = [list(row) for row in rows]
+        sql = f"SELECT SUM(Score) FROM Questions WHERE AssignmentID IN (SELECT AssignmentID FROM Assignments WHERE CourseID = {course_id})"
+        cursor.execute(sql)
+        total = cursor.fetchone()
+        if total[0] is None:
+            total = (0,)
+        for row in rows:
+            sql = f"SELECT SUM(Score) FROM Submissions WHERE UserID = {row[0]} AND QuestionID in (SELECT QuestionID FROM Questions WHERE AssignmentID IN (SELECT AssignmentID FROM Assignments WHERE CourseID = {course_id}))"
+            cursor.execute(sql)
+            score = cursor.fetchone()
+            if score[0] is None:
+                score = (0,)
+            row.append(f"{round(float(score[0]),2)}/{round(float(total[0]),2)}")
+        return rows
     except sqlite3.Error as e:
         print(e)
         return None

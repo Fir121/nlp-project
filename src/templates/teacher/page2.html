@@ -1,53 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-    </style>
+{% extends "student/studentlayout.html" %}
+{% block head %}
     <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}" />
-  </head>
-  <body>
-    <header>
-      <div class="left">
-        <a href="/" id="yes" style="height: 70px">
-          <img id="gradescale" src="{{url_for('static', filename='logo.png')}}" alt="Logo" />
-        </a>
-        <div class="header-content">
-          <h1>GradeScale</h1>
-          <h2>Grading. Evolved.</h2>
-        </div>
-      </div>
-      <input
-        type="text"
-        id="unnecessary"
-        placeholder="Search For Courses, Tools, Settings, Or Anything!"
-      />
-      <div id="buttons">
-        <a href="/student/dashboard"
-          ><img
-            src="{{url_for('static', filename='User 1.png')}}"
-            alt="profile-picture"
-            id="profile-picture"
-            style="width: 50px; aspect-ratio: 1/1; margin: 10px"
-        /></a>
-      </div>
-    </header>
+{% endblock %}
+{% block content %}
     <h2 style="font-size: 40px; margin: 20px 0px 20px 50px">
       {{coursename}}
     </h2>
-    <div class="container" style="width: 85%">
+    <div class="container" style="width: 85%;min-height: 80vh;">
       <section class="assessment-list">
-        <h3
-          style="
-            font-size: 32px;
-            margin-bottom: 20px;
-          "
-        >
-          Assessment List
-        </h3>
+        <div>
+          <h3
+            style="
+              font-size: 32px;
+              margin-bottom: 20px;
+              display: inline-block;
+            "
+          >
+            Assessment List
+          </h3>
+          <button onclick="addAssignmentPopup()" class="submit-button" style="display: inline-block;float:right;">Add Assignment</button>
+          <a href="/teacher/students/{{courseid}}" style="display:block;margin-bottom:40px;">Enrolled Students</a>
+        </div>
         <div class="table-outside">
           <table style="border-collapse: separate; border-spacing: 0 10px">
             <thead>
@@ -78,5 +51,31 @@
         </div>
       </section>
     </div>
-  </body>
-</html>
+    <script>
+      function addAssignmentPopup(){
+        var popup = document.createElement("div");
+        popup.className = "popup";
+        popup.innerHTML = `
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h2 style="margin-bottom:30px;">Add Assignment</h2>
+          <form action="/teacher/addassignment/{{courseid}}" method="POST">
+            <label for="assignmentname">Assignment Name:</label><br>
+            <input type="text" id="assignmentname" name="assignmentname" required><br><br>
+            <label for="section">Section:</label><br>
+            <input type="text" id="section" name="section" required><br><br>
+            <label for="duedate">Due Date:</label><br>
+            <input type="date" id="duedate" name="duedate" required><br><br><br>
+            <input type="submit" class="small-submit-button" value="Submit">
+          </form>
+        </div>
+        `;
+        document.body.appendChild(popup);
+      }
+
+      function closePopup(){
+        var popup = document.getElementsByClassName("popup")[0];
+        popup.remove();
+      }
+    </script>
+{% endblock %}

@@ -83,7 +83,7 @@ def teacher_course(courseid):
     if not session.get("isteacher"):
         return redirect('/')
     assignments = bf.get_assignments(bf.create_connection(), courseid)
-    return render_template('teacher/page2.html', assignments=assignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
+    return render_template('teacher/page2.html', assignments=assignments, coursename=bf.get_course_name(bf.create_connection(), courseid), courseid=courseid)
 
 @app.route("/teacher/addquestion/<int:assignmentid>", methods=['GET','POST'])
 def teacher_addquestion(assignmentid):
@@ -118,7 +118,7 @@ def student_course(courseid):
     for assignment in completeassignments:
         reports = bf.get_all_reports(bf.create_connection(), assignment[0], session.get("userid"))
         assignment.append(bf.zip_all_reports(reports))
-    return render_template('student/page2.html', incompleteassignments=incompleteassignments, completeassignments=completeassignments, coursename=bf.get_course_name(bf.create_connection(), courseid))
+    return render_template('student/page2.html', incompleteassignments=incompleteassignments, completeassignments=completeassignments, coursename=bf.get_course_name(bf.create_connection(), courseid), courseid=courseid)
 
 @app.route("/student/assignment/<int:assignmentid>", methods=['GET','POST'])
 def student_assignment(assignmentid):
@@ -164,6 +164,38 @@ def addcourse():
     if res is None:
         abort(500)
     return redirect('/teacher/dashboard')
+
+@app.route("/teacher/addassignment/<int:courseid>", methods=['POST'])
+def addassignment(courseid):
+    if not session.get("isteacher"):
+        return redirect('/')
+    assignmentname = request.form.get('assignmentname')
+    section = request.form.get('section')
+    duedate = request.form.get('duedate')
+    res = bf.add_assignment(bf.create_connection(), courseid, assignmentname, section, duedate)
+    if res is None:
+        abort(500)
+    return redirect(f'/teacher/course/{courseid}')
+
+@app.route("/teacher/students/<int:courseid>")
+def students(courseid):
+    if not session.get("isteacher"):
+        return redirect('/')
+    students = bf.get_students(bf.create_connection(), courseid)
+    return render_template('teacher/studentlistcourse.html', students=students, coursename=bf.get_course_name(bf.create_connection(), courseid), courseid=courseid)
+
+@app.route("/teacher/addstudent/<int:courseid>", methods=['POST'])
+def addstudent(courseid):
+    if not session.get("isteacher"):
+        return redirect('/')
+    studentemail = request.form.get('studentemail')
+    uid = bf.get_student_user_id(bf.create_connection(), studentemail)
+    if uid is None:
+        abort(500)
+    res = bf.add_student_to_course(bf.create_connection(), uid, courseid)
+    if res is None:
+        abort(500)
+    return redirect(f'/teacher/students/{courseid}')
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
