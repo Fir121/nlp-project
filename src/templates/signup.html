@@ -1,31 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        </style>
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    </head>
-    <body>
-        <!-- Header Section -->
-        <header>
-        <img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
-            <div class="header-content">
-                <h1>GradeScale</h1>
-                <h2>Grading. Evolved.</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
-                    <li><a href="/login">Login</a></li>
-                </ul>
-            </nav>
-        </header>   
+{% extends "staticlayout.html" %}
         
+{% block content %}
         <!-- Main Content Section -->
+        <div style="width:100%;display: block;">
         <div class="paragraph1">
           <div class="signup-image"></div>
           <div class="content">
@@ -90,5 +67,4 @@
             </div>        
         </div>
       </div>
-    </body>
-</html>
+{% endblock %}

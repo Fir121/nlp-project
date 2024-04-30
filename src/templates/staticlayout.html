@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GradeScale</title>
+        {% block head %}
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+        </style>
+        {% endblock %}
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    </head>
+    <body>
+        <!-- Header Section -->
+        <header>
+            <img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
+            <div class="header-content">
+                <h1>GradeScale</h1>
+                <h2>Grading. Evolved.</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/#about-us">About Us</a></li>
+                    <li><a href="/pricing">Pricing</a></li>
+                    <li><a href="/signup">Sign Up</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+          
+        
+        {% block content %}
+        {% endblock %}
+        
+        <!-- Footer Section -->
+        <div class="footer-container">
+            <a href="/terms" style="text-decoration: none;"><div class="copyright">© GradeScale 2024</div></a>
+        </div>
+    </body>
+    {% block scripts %}
+    {% endblock %}
+</html>

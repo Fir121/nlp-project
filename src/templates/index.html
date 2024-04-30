@@ -1,30 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        </style>
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    </head>
-    <body>
-        <!-- Header Section -->
-        <header>
-            <img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
-            <div class="header-content">
-                <h1>GradeScale</h1>
-                <h2>Grading. Evolved.</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/pricing">Pricing</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
-                    <li><a href="/login">Login</a></li>
-                </ul>
-            </nav>
-        </header>
-          
+{% extends "staticlayout.html" %}
+
+{% block content %}          
         <!-- Main Content Section -->
         <div class="paragraph1">
             <div class="bg-image"></div>
@@ -35,6 +11,7 @@
             </div>
         </div>
         <!-- Features Section -->
+        <section id="about-us">
             <div class="outer-container">
                 <div class="container">
                     <div class="box">
@@ -54,27 +31,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Footer Section -->
-            <div class="footer-container">
-                <div class="footer-links">
-                    <div class="footer-link">About us</div>
-                    <div class="footer-link">Help Center</div>
-                    <div class="footer-link">Support Line</div>
-                    <div class="footer-link">Technology Used</div>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-link">Contact us</div>
-                    <div class="footer-link">Teachers</div>
-                    <div class="footer-link">Press</div>
-                    <div class="footer-link">Pricing</div>
-                    <div class="footer-icons">
-                        <div class="social-icon"></div>
-                        <div class="social-icon"></div>
-                    </div>
-                </div>
-                <div class="copyright">© GradeScale 2024</div>
-            </div>
-            </div>
-          </div>
-    </body>
-</html>
+        </section>
+
+{% endblock %}

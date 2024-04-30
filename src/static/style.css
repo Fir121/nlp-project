@@ -5,6 +5,10 @@
     font-style: normal;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
 body {
     font-family: "Outfit", sans-serif;
     margin: 0;
@@ -395,6 +399,7 @@ nav ul li a:hover {
   
 /*FOOTER*/
 .footer-container {
+  margin-top: 50px;
   background-color: #764F29;
   padding: 20px 30px; 
   width: 100%; 
