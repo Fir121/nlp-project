@@ -40,7 +40,7 @@ CREATE TABLE Submissions (
     QuestionID INTEGER,
     UserID INTEGER,
     SubmissionDate DATE DEFAULT CURRENT_DATE,
-    ReportPath TEXT DEFAULT NULL,
+    ReportData TEXT DEFAULT NULL,
     AnswerText TEXT,
     Score NUMERIC DEFAULT 0,
     FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID),

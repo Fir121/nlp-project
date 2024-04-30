@@ -21,13 +21,11 @@
     </div>
     <!-- Question Container -->
     <div class="container">
-      <p style="font-size: 16px; font-weight: 600; color: rgba(169, 0, 0, 0.7)">
-        Note: Remember to add in the model answer after each question!
-      </p>
 
       {% for question in questions %}
         <h2 class="questions-heading">Question {{loop.index}}</h2>
         <h3 class="questions">
+          <input type="text" readonly value="{{question[3]}} Marks"></input>
           <input readonly type="text" value="{{question[1]}}" id="{{question[0]}}"/>
         </h3>
         <div class="answer-box-box">
@@ -40,13 +38,18 @@
     </div>
     <div style="width: 100%;text-align: center;">
         <button id="save-question" onclick="postRequest()">Submit</button>
+        <div id="loading" style="display: none;">Loading... Please Wait</div>
     </div>
   <script>
     function postRequest(){
+        var loading = document.getElementById("loading");
+        loading.style.display = "block";
+        var button = document.getElementById("save-question");
+        button.style.display = "none";
         var questions = document.getElementsByClassName("questions");
         var questionList = [];
         for (var i = 0; i < questions.length; i++){
-            var question = questions[i].getElementsByTagName("input")[0].id;
+            var question = questions[i].getElementsByTagName("input")[1].id;
             var answer = questions[i].nextElementSibling.getElementsByClassName("answer-box")[0].value;
             questionList.push([question, answer]);
         }
@@ -58,6 +61,9 @@
         xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 window.location.href = "/student/dashboard";
+            }
+            if (xhr.readyState == 4 && xhr.status != 200){
+              alert("Failed! please contact an administrator")
             }
         }
     }

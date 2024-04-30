@@ -162,6 +162,18 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
+#loading{
+  border: none;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  margin: auto;
+  margin: 15px;
+}
+
 /*FOOTER*/
 .footer-container {
   margin-top: 50px;

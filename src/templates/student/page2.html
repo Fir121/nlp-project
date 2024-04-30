@@ -62,7 +62,7 @@
           </thead>
           <tbody>
             {% for assignment in completeassignments %}
-              <tr onclick="window.location.href='/reportpath/{{assignment[5]}}'" style="cursor: pointer; text-decoration: none; color: black">
+              <tr onclick="window.location.href='/getreportdyn/{{assignment[0]}}'" style="cursor: pointer; text-decoration: none; color: black">
                 <td>{{assignment[1]}}</td>
                 <td>{{assignment[2]}}</td>
                 <td>{{assignment[3]}}</td>

@@ -293,6 +293,25 @@ def get_incomplete_assignments(conn, course_id, student_id):
         print(e)
         return None
 
+import json
+def get_submissions(conn, assignment_id, student_id):
+    try:
+        sql = f"SELECT SubmissionID, ReportData FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {assignment_id})"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        rows = [list(row) for row in rows]
+        for row in rows:
+            row[1] = json.loads(row[1])
+            sql = f"Select Question from Questions where QuestionID in (SELECT QuestionID from Submissions where SubmissionID = {row[0]})"
+            cursor.execute(sql)
+            question = cursor.fetchone()
+            row.append(question[0])
+        return rows
+    except sqlite3.Error as e:
+        print(e)
+        return None
+
 def get_completed_assignments(conn, course_id, student_id):
     try:
         sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id} AND AssignmentID IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = {student_id}))"
@@ -324,7 +343,7 @@ def get_all_reports(conn, assignment_id, student_id):
 
 def get_question(conn, questionid):
     try:
-        sql = f"SELECT Question, Answer FROM Questions WHERE QuestionID = {questionid}"
+        sql = f"SELECT Question, Answer, Score FROM Questions WHERE QuestionID = {questionid}"
         cursor = conn.cursor()
         cursor.execute(sql)
         row = cursor.fetchone()
@@ -403,9 +422,9 @@ def make_submission(conn, questionid, user_id, answer):
         return None
 
 # Function to store a report
-def store_report(conn, submission_id, report_path, score):
+def store_report_data(conn, submission_id, data, score):
     try:
-        sql = f"UPDATE Submissions SET ReportPath = '{report_path}', Score = {score} WHERE SubmissionID = {submission_id}"
+        sql = f"UPDATE Submissions SET ReportData = '{data}', Score={score} WHERE SubmissionID = {submission_id}"
         cursor = conn.cursor()
         cursor.execute(sql)
         conn.commit()

@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template, abort, session, redi
 from flask_session import Session
 import backendfunctions as bf
 from nlp.grader import grader
+import json
 
 app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
@@ -115,10 +116,15 @@ def student_course(courseid):
         return redirect('/')
     incompleteassignments = bf.get_incomplete_assignments(bf.create_connection(), courseid, session.get("userid"))
     completeassignments = bf.get_completed_assignments(bf.create_connection(), courseid, session.get("userid"))
-    for assignment in completeassignments:
-        reports = bf.get_all_reports(bf.create_connection(), assignment[0], session.get("userid"))
-        assignment.append(bf.zip_all_reports(reports))
     return render_template('student/page2.html', incompleteassignments=incompleteassignments, completeassignments=completeassignments, coursename=bf.get_course_name(bf.create_connection(), courseid), courseid=courseid)
+
+@app.route("/getreportdyn/<int:assignmentid>", methods=['GET'])
+def getreportdyn(assignmentid):
+    if session.get("isteacher"):
+        return redirect('/')
+    #todo get all datas and return a report
+    submissions = bf.get_submissions(bf.create_connection(), assignmentid, session.get("userid"))
+    return jsonify(submissions)
 
 @app.route("/student/assignment/<int:assignmentid>", methods=['GET','POST'])
 def student_assignment(assignmentid):
@@ -134,8 +140,8 @@ def student_assignment(assignmentid):
         if res is None:
             abort(500)
         question = bf.get_question(bf.create_connection(), answer[0])
-        path,score = grader(question[0], question[1], answer[1])
-        res2 = bf.store_report(bf.create_connection(), res, path, score)
+        data = grader(question[0], question[1], answer[1], question[2])
+        res2 = bf.store_report_data(bf.create_connection(), res, json.dumps(data), data["Final Grade"])
         if res2 is None:
             abort(500)
     return redirect(f'/student/dashboard')
