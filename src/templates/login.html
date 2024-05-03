@@ -3,9 +3,12 @@
 {% block content %}
 <div style="width:100%;display: block;min-height: 80vh;">
         <!-- Main Content Section -->
-        <div class="paragraph1">
-          <div class="signup-image"></div>
-          <div class="content">
+        <div class="paragraph1 container">
+          <div class="row">
+            <div class="col-12 col-lg-5 text-center">
+              <img src="{{url_for('static', filename='signup.png')}}" style="width: 80%;"></img>
+            </div>
+          <div class="col-12 col-lg-7 text-start">
             <div class="login-section">
               <div class="title">Log In</div>
               <div class="sign-up">
@@ -28,6 +31,7 @@
           <button type="submit" class="submit-button">Submit</button> 
         </form>
             </div>
+          </div>
         </div>
       </div>
     </div>

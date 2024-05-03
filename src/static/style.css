@@ -76,11 +76,6 @@ nav ul li a:hover {
 }
 
 .paragraph1 {
-    margin: 0 74.1px 70px 49px;
-    width: fit-content;
-    box-sizing: border-box;
-    text-align: center;
-    margin: auto;
 }
 
 .bg-image {
@@ -319,7 +314,6 @@ nav ul li a:hover {
   }
   
 .password-section {
-    margin: 0 369px 9px 0;
   }
   
   .password-text {
@@ -327,8 +321,8 @@ nav ul li a:hover {
     font-weight: bold;
     font-size: 15.5px;
     color: rgba(0, 0, 0, 0.6);
-    word-break: break-word;
     display: inline-block;
+    width: 100%;
   }
   
 .input-box {
@@ -356,7 +350,6 @@ nav ul li a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 4.5px 20px 0;
     width: 160px;
     height: 50px;
     position: relative;
