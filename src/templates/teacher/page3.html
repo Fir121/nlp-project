@@ -30,10 +30,10 @@
         <h2 class="questions-heading">Question {{loop.index}}</h2>
         <h3 class="questions">
           <input type="number" placeholder="Enter the Score (marks)" value="{{question[3]}}"></input>
-          <input type="text" value="{{question[1]}}" />
+          <input type="text" value="{{question[1]}}" placeholder="Enter your question here"/>
         </h3>
         <div class="answer-box-box">
-          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">{{question[2]}}</textarea>
+          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box" placeholder="Enter your answer here">{{question[2]}}</textarea>
         </div>  
     {% endfor %}
 
@@ -86,7 +86,7 @@
       newQuestionInput.appendChild(newQuestionInputText);
       var newQuestionInputText = document.createElement("input");
       newQuestionInputText.setAttribute("type", "text");
-      newQuestionInputText.setAttribute("value", "Enter your question here");
+      newQuestionInputText.setAttribute("placeholder", "Enter your question here");
       newQuestionInput.appendChild(newQuestionInputText);
       var newAnswerBoxBox = document.createElement("div");
       newAnswerBoxBox.classList.add("answer-box-box");
@@ -95,7 +95,7 @@
       newAnswerBox.setAttribute("cols", "50");
       newAnswerBox.setAttribute("rows", "10");
       newAnswerBox.classList.add("answer-box");
-      newAnswerBox.innerText = "Enter your answer here";
+      newAnswerBox.placeholder = "Enter your answer here";
       newAnswerBoxBox.appendChild(newAnswerBox);
       document.querySelector(".container").appendChild(newQuestion);
       document.querySelector(".container").appendChild(newQuestionInput);

@@ -338,6 +338,10 @@ nav ul li a:hover {
 
 }
 
+input{
+  padding: 5px;
+}
+
 /*LOGIN PAGE*/
 .join-container, .button-container  {
     display: flex;

@@ -34,13 +34,8 @@
             </thead>
             <tbody>
               {% for assignment in assignments %}
-              <tr>
-                <td>
-                  <a
-                    href="/teacher/addquestion/{{assignment[0]}}"
-                    style="cursor: pointer; text-decoration: none; color: black"
-                    >{{assignment[1]}}
-                  </a>
+              <tr onclick="window.location.href='/teacher/addquestion/{{assignment[0]}}'" style="cursor: pointer; text-decoration: none; color: black">
+                <td>{{assignment[1]}}
                 </td>
                 <td>{{assignment[2]}}</td>
                 <td>{{assignment[3]}}</td>

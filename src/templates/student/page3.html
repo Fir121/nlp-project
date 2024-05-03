@@ -29,7 +29,7 @@
           <input readonly type="text" value="{{question[1]}}" id="{{question[0]}}"/>
         </h3>
         <div class="answer-box-box">
-          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">Answer Here</textarea>
+          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box" placeholder="Answer Here"></textarea>
         </div>  
     {% endfor %}
 
@@ -66,6 +66,24 @@
               alert("Failed! please contact an administrator")
             }
         }
+    }
+
+    var inputfields = document.getElementsByClassName("answer-box");
+
+    function loadFromLocal(){
+      for (var i = 0; i < inputfields.length; i++){
+        if (localStorage.getItem("answer"+i.toString()) != null){
+          inputfields[i].value = localStorage.getItem("answer"+i.toString());
+        }
+      }
+    }
+    loadFromLocal();
+
+    
+    for (var i = 0; i < inputfields.length; i++){
+      inputfields[i].addEventListener("input", function(){
+        localStorage.setItem("answer"+i.toString(), this.value);
+      })
     }
   </script>
 {% endblock %}
