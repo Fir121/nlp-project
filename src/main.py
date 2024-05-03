@@ -55,14 +55,19 @@ def signup():
             return redirect('/student/dashboard')
         return render_template('signup.html')
     name = request.form.get('name')
+    name = name.title()
     email = request.form.get('email')
+    if not email.endswith("@dubai.bits-pilani.ac.in"):
+        flash("Invalid email, use a BITS Dubai email")
+        return redirect('/signup')
     password = request.form.get('password')
     repassword = request.form.get('repassword')
     isteacher = True if request.form.get('selectedtoggle') == "teacher" else False
 
     res = bf.signup(bf.create_connection(), name, email, password, repassword, isteacher)
     if res is None:
-        abort(500)
+        flash("Invalid signup details")
+        return redirect('/signup')
 
     session["userid"] = res
     session["isteacher"] = isteacher
@@ -99,7 +104,8 @@ def teacher_addquestion(assignmentid):
     for question in questions:
         res = bf.add_question_to_assignment(bf.create_connection(), assignmentid, question[0], question[1], question[2])
         if res is None:
-            abort(500)
+            flash("Something went wrong")
+            return redirect(f'/teacher/addquestion/{assignmentid}')
 
     return redirect(f'/teacher/dashboard')
 
@@ -138,12 +144,14 @@ def student_assignment(assignmentid):
     for answer in answers:
         res = bf.make_submission(bf.create_connection(), answer[0], session.get("userid"), answer[1])
         if res is None:
-            abort(500)
+            flash("Something went wrong")
+            return redirect(f'/student/assignment/{assignmentid}')
         question = bf.get_question(bf.create_connection(), answer[0])
         data = grader(question[0], question[1], answer[1], question[2])
         res2 = bf.store_report_data(bf.create_connection(), res, json.dumps(data), data["Final Grade"])
         if res2 is None:
-            abort(500)
+            flash("Something went wrong")
+            return redirect(f'/student/assignment/{assignmentid}')
     return redirect(f'/student/dashboard')
 
 @app.route("/reportpath/<path:path>")
@@ -168,7 +176,7 @@ def addcourse():
     coursename = request.form.get('coursename')
     res = bf.add_course(bf.create_connection(), session.get("userid"), coursename)
     if res is None:
-        abort(500)
+        flash("Something went wrong")
     return redirect('/teacher/dashboard')
 
 @app.route("/teacher/addassignment/<int:courseid>", methods=['POST'])
@@ -180,7 +188,7 @@ def addassignment(courseid):
     duedate = request.form.get('duedate')
     res = bf.add_assignment(bf.create_connection(), courseid, assignmentname, section, duedate)
     if res is None:
-        abort(500)
+        flash("Something went wrong")
     return redirect(f'/teacher/course/{courseid}')
 
 @app.route("/teacher/students/<int:courseid>")
@@ -197,10 +205,11 @@ def addstudent(courseid):
     studentemail = request.form.get('studentemail')
     uid = bf.get_student_user_id(bf.create_connection(), studentemail)
     if uid is None:
-        abort(500)
+        flash("Student not found")
+        return redirect(f'/teacher/students/{courseid}')
     res = bf.add_student_to_course(bf.create_connection(), uid, courseid)
     if res is None:
-        abort(500)
+        flash("Something went wrong")
     return redirect(f'/teacher/students/{courseid}')
 
 if __name__ == '__main__':

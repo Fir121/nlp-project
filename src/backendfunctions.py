@@ -183,6 +183,8 @@ def get_student_user_id(conn, email):
         cursor = conn.cursor()
         cursor.execute(sql)
         row = cursor.fetchone()
+        if row is None:
+            return None
         return row[0]
     except sqlite3.Error as e:
         print(e)
