@@ -1,80 +1,44 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        </style>
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    </head>
-    <body>
-        <!-- Header Section -->
-        <header>
-            <img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
-            <div class="header-content">
-                <h1>GradeScale</h1>
-                <h2>Grading. Evolved.</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="/pricing">Pricing</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
-                    <li><a href="/login">Login</a></li>
-                </ul>
-            </nav>
-        </header>
-          
+{% extends "staticlayout.html" %}
+
+{% block content %}          
         <!-- Main Content Section -->
-        <div class="paragraph1">
-            <div class="bg-image"></div>
-            <div class="content">
-                <div class="title">Cutting Edge AI Powered Assessment Grading Tool At Your Fingertips</div>
-                <div class="description">Welcome to GradeScale! We are revolutionizing education with cutting-edge AI technology. We empower educators by seamlessly integrating LLMs into the grading process, enhancing efficiency and accuracy. Join us in shaping the future of learning!</div>
-                <a href="/signup" class="signup-button">Click here to Sign up with Us!</a>               
+        <div class="paragraph1 container m-0 m-lg-5" style="max-width: 1386px;padding: 10px;">
+            <div class="row">
+                <div class="col-12 col-lg-4">
+                    <img src="{{url_for('static', filename='frontpage.png')}}" alt="Logo" style="width: 90%;">
+                </div>
+                <div class="col-12 col-lg-8 mb-3">
+                    <div class="title">Cutting Edge AI Powered Assessment Grading Tool At Your Fingertips</div>
+                    <div class="description">Welcome to GradeScale! We are revolutionizing education with cutting-edge AI technology. We empower educators by seamlessly integrating LLMs into the grading process, enhancing efficiency and accuracy. Join us in shaping the future of learning!</div>
+                    <a href="/signup" class="signup-button" style="margin: auto;">Click here to Sign up with Us!</a>               
+                </div>
             </div>
         </div>
         <!-- Features Section -->
+        <section id="about-us">
             <div class="outer-container">
-                <div class="container">
-                    <div class="box">
-                        <h2>Scan Your Answers</h2>
-                        <img src="{{url_for('static', filename='scan.png')}}" alt="Scan Your Answers Image">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget sapien id nunc bibendum tempus. Nulla facilisi. Sed vel lectus ut nisl tempor fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed euismod ex sit amet nisl vestibulum, sit amet aliquet mi finibus. Morbi eu mauris felis. Aliquam euismod dolor sit amet magna aliquam, non mattis libero sodales. Mauris non nisi </p>
-                    </div>
-                    <div class="box">
-                        <h2>Advanced LLMs</h2>
-                        <img src="{{url_for('static', filename='llms.png')}}" alt="Advanced LLMs Image">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget sapien id nunc bibendum tempus. Nulla facilisi. Sed vel lectus ut nisl tempor fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed euismod ex sit amet nisl vestibulum, sit amet aliquet mi finibus. Morbi eu mauris felis. Aliquam euismod dolor sit amet magna aliquam, non mattis libero sodales. Mauris non nisi </p>
-                    </div>
-                    <div class="box">
-                        <h2>GradeAssist</h2>
-                        <img src="{{url_for('static', filename='assist.png')}}" alt="GradeAssist Image">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget sapien id nunc bibendum tempus. Nulla facilisi. Sed vel lectus ut nisl tempor fermentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed euismod ex sit amet nisl vestibulum, sit amet aliquet mi finibus. Morbi eu mauris felis. Aliquam euismod dolor sit amet magna aliquam, non mattis libero sodales. Mauris non nisi </p>
+                <div class="container p-5 rounded-1" style="background-color: #EED9C466">
+                    <div class="row">
+                        <div class="col-12 col-lg-3 m-1 rounded-5 p-4 text-center" style="background-color: white;">
+                            <h2>Scan Your Answers</h2>
+                            <img src="{{url_for('static', filename='scan.png')}}" alt="Scan Your Answers Image" style="width:80%;margin:auto;margin-bottom:20px;text-align: center;">
+                            <p>Students can have the flexibility to choose how they submit their answers – whether it's through a quick scan or by typing directly into our user-friendly web portal. Our AI technology works tirelessly behind the scenes, ensuring accurate and efficient grading every time. Say goodbye to tedious manual grading and hello to more time for impact teaching moments. Join the future of assessment today and see the difference for yourself!</p>
+                        </div>
+                        <div class="col-0 col-lg-1"></div>
+                        <div class="col-12 col-lg-3 m-1 rounded-5 p-4 text-center" style="background-color: white;">
+                            <h2>Advanced LLMs</h2>
+                            <img src="{{url_for('static', filename='llms.png')}}" alt="Advanced LLMs Image" style="width:80%;margin:auto;margin-bottom:20px;text-align: center;">
+                            <p>Discover the future of grading with our advanced AI technology. Unlike  traditional systems, we don't just look for keywords – we understand the  meaning behind student responses, ensuring accurate grading and  reducing errors. Experience the efficiency of precise assessment  correction. Upgrade to our AI-powered test grader today!</p>
+                        </div>
+                        <div class="col-0 col-lg-1"></div>
+                        <div class="col-12 col-lg-3 m-1 rounded-5 p-4 text-center" style="background-color: white;">
+                            <h2>GradeAssist</h2>
+                            <img src="{{url_for('static', filename='assist.png')}}" alt="GradeAssist Image" style="width:80%;margin:auto;margin-bottom:20px;text-align: center;">
+                            <p>Introducing GradeAssist, your ultimate grading companion! With GradeAssist, teachers can quickly grade assessments with ease, thanks to our advanced AI technology. But it doesn't stop there – we believe in transparency and empowerment. Our system provides teachers with a detailed breakdown of how each question was graded, offering full transparency. Moreover, GradeAssist allows educators to override AI grading with their own assessments, ensuring fairness.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Footer Section -->
-            <div class="footer-container">
-                <div class="footer-links">
-                    <div class="footer-link">About us</div>
-                    <div class="footer-link">Help Center</div>
-                    <div class="footer-link">Support Line</div>
-                    <div class="footer-link">Technology Used</div>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-link">Contact us</div>
-                    <div class="footer-link">Teachers</div>
-                    <div class="footer-link">Press</div>
-                    <div class="footer-link">Pricing</div>
-                    <div class="footer-icons">
-                        <div class="social-icon"></div>
-                        <div class="social-icon"></div>
-                    </div>
-                </div>
-                <div class="copyright">© GradeScale 2024</div>
-            </div>
-            </div>
-          </div>
-    </body>
-</html>
+        </section>
+
+{% endblock %}

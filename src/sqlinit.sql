@@ -30,6 +30,7 @@ CREATE TABLE Questions (
     AssignmentID INTEGER,
     Question TEXT NOT NULL,
     Answer TEXT NOT NULL,
+    Score NUMERIC DEFAULT 0,
     FOREIGN KEY (AssignmentID) REFERENCES Assignments(AssignmentID)
 );
 
@@ -39,9 +40,9 @@ CREATE TABLE Submissions (
     QuestionID INTEGER,
     UserID INTEGER,
     SubmissionDate DATE DEFAULT CURRENT_DATE,
-    ReportPath TEXT DEFAULT NULL,
+    ReportData TEXT DEFAULT NULL,
     AnswerText TEXT,
-    Score INTEGER DEFAULT 0,
+    Score NUMERIC DEFAULT 0,
     FOREIGN KEY (QuestionID) REFERENCES Questions(QuestionID),
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );

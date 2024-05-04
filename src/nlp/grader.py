@@ -20,7 +20,7 @@ def generate_html_page(score):
     
     return fpath
 
-def grader(question,ref_ans,answer):
+def grader(question,ref_ans,answer, score):
     final = dict(accuracy = accuracy.accuracy(ref_ans,answer),
                  relevance = relevance.relevance(question,ref_ans,answer),
                  organization = organization.organization(answer),
@@ -29,10 +29,11 @@ def grader(question,ref_ans,answer):
                  spelling = spelling_code.calculate_spelling_score(answer)*100,
                  vocabulary = vocabulary_code.calculate_vocabulary_score(answer)*100
                  )
+    final["Final Grade"] = sum(final.values())/7
     for key in final:
-        final[key] = round(final[key],2)
-    final["Final Grade"] = round(sum(final.values())/7, 2)
+        final[key] = round((final[key]/100)*score,2)
+    final["Max Score"] = score
     print(final)
     path = generate_html_page(final)
     print(path)
-    return path, final["Final Grade"]
+    return final

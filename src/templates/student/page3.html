@@ -1,40 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
-    </style>
+{% extends "student/studentlayout.html" %}
+{% block head %}
     <link rel="stylesheet" href="{{url_for('static', filename='qspg.css')}}" />
-  </head>
-  <body>
-    <header>
-      <div class="left">
-        <a href="/" id="yes" style="height: 70px">
-          <img id="gradescale" src="{{url_for('static', filename='logo.png')}}" alt="Logo" />
-        </a>
-        <div class="header-content">
-          <h1>GradeScale</h1>
-          <h2>Grading. Evolved.</h2>
-        </div>
-      </div>
-      <input
-        type="text"
-        id="unnecessary"
-        placeholder="Search For Courses, Tools, Settings, Or Anything!"
-      />
-      <div id="buttons">
-        <a href="/teacher/dashboard"
-          ><img
-            src="{{url_for('static', filename='User 1.png')}}"
-            alt="profile-picture"
-            id="profile-picture"
-            style="width: 50px; aspect-ratio: 1/1; margin: 10px"
-        /></a>
-      </div>
-    </header>
+{% endblock %}
+{% block content %}
     <!-- Quiz Details -->
     <div
       class="top-container"
@@ -53,17 +21,15 @@
     </div>
     <!-- Question Container -->
     <div class="container">
-      <p style="font-size: 16px; font-weight: 600; color: rgba(169, 0, 0, 0.7)">
-        Note: Remember to add in the model answer after each question!
-      </p>
 
       {% for question in questions %}
         <h2 class="questions-heading">Question {{loop.index}}</h2>
         <h3 class="questions">
+          <input type="text" readonly value="{{question[3]}} Marks"></input>
           <input readonly type="text" value="{{question[1]}}" id="{{question[0]}}"/>
         </h3>
         <div class="answer-box-box">
-          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box">Answer Here</textarea>
+          <textarea name="paragraph_text" cols="50" rows="10" class="answer-box" placeholder="Answer Here"></textarea>
         </div>  
     {% endfor %}
 
@@ -72,14 +38,18 @@
     </div>
     <div style="width: 100%;text-align: center;">
         <button id="save-question" onclick="postRequest()">Submit</button>
+        <div id="loading" style="display: none;">Loading... Please Wait</div>
     </div>
-  </body>
   <script>
     function postRequest(){
+        var loading = document.getElementById("loading");
+        loading.style.display = "block";
+        var button = document.getElementById("save-question");
+        button.style.display = "none";
         var questions = document.getElementsByClassName("questions");
         var questionList = [];
         for (var i = 0; i < questions.length; i++){
-            var question = questions[i].getElementsByTagName("input")[0].id;
+            var question = questions[i].getElementsByTagName("input")[1].id;
             var answer = questions[i].nextElementSibling.getElementsByClassName("answer-box")[0].value;
             questionList.push([question, answer]);
         }
@@ -92,7 +62,28 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
                 window.location.href = "/student/dashboard";
             }
+            if (xhr.readyState == 4 && xhr.status != 200){
+              alert("Failed! please contact an administrator")
+            }
         }
     }
+
+    var inputfields = document.getElementsByClassName("answer-box");
+
+    function loadFromLocal(){
+      for (var i = 0; i < inputfields.length; i++){
+        if (localStorage.getItem("answer"+i.toString()) != null){
+          inputfields[i].value = localStorage.getItem("answer"+i.toString());
+        }
+      }
+    }
+    loadFromLocal();
+
+    
+    for (var i = 0; i < inputfields.length; i++){
+      inputfields[i].addEventListener("input", function(){
+        localStorage.setItem("answer"+i.toString(), this.value);
+      })
+    }
   </script>
-</html>
+{% endblock %}

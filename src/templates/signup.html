@@ -1,34 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <style>
-            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        </style>
-        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
-    </head>
-    <body>
-        <!-- Header Section -->
-        <header>
-        <img class="img" src="{{url_for('static', filename='logo.png')}}" alt="Logo">
-            <div class="header-content">
-                <h1>GradeScale</h1>
-                <h2>Grading. Evolved.</h2>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
-                    <li><a href="/login">Login</a></li>
-                </ul>
-            </nav>
-        </header>   
+{% extends "staticlayout.html" %}
         
+{% block content %}
         <!-- Main Content Section -->
-        <div class="paragraph1">
-          <div class="signup-image"></div>
-          <div class="content">
+        <div style="width:100%;display: block;">
+        <div class="paragraph1 container">
+          <div class="row">
+          <div class="col-12 col-lg-5 text-center">
+            <img src="{{url_for('static', filename='signup.png')}}" style="width: 80%;"></img>
+          </div>
+          <div class="col-12 col-lg-7 text-start">
             <div class="login-section">
               <div class="title">Sign Up</div>
               <div class="sign-up">
@@ -37,7 +17,7 @@
               </div>
           <form method="post" action="/signup">
               <div class="join-text">Join GradeScale as:</div><br>
-              <div class="join-container">
+              <div class="join-container" style="cursor: pointer;">
                 <div id="teacher" class="join-as-teacher">
                   <span id="textteach" class="text-teacher">Teacher</span>
                 </div>
@@ -45,7 +25,7 @@
                   <span id="textstud" class="text-student">Student</span>
                 </div>
               </div>
-              <input type="text" id="selectedtoggle" name="selectedtoggle" style="opacity:0.1"></input>
+              <input type="text" id="selectedtoggle" name="selectedtoggle" style="opacity:0"></input>
               <script>
 
                 document.getElementById('selectedtoggle').value = 'teacher';
@@ -66,29 +46,33 @@
                     document.getElementById('textstud').classList = 'text-teacher';
                     document.getElementById('selectedtoggle').value = 'student';
                 });
-              </script><br><br>
-              <div class="enter-name">Enter Your Name</div><br><br>
-              <input type="text" class="input-box" name="name"></input><br>
+              </script><br>
+              <div class="enter-name">Enter Your Name</div><br>
+              <input type="text" class="input-box" name="name"></input><br><br>
               <div class="email-address-section">
                 <div class="email-address-text">Enter Your Email Address</div>
               </div>   
               <input type="text" class="input-box" name="email"></input>  
-              <br>       
+              <br>       <br>
               <div class="password-section">
                 <div class="password-text">Enter a Password</div>
               </div>
-              <input type="password" class="input-box" name="password"></input><br>
+              <input type="password" class="input-box" name="password"></input><br><br>
               <div class="password-section">
                 <div class="password-text">Re-enter Your Password</div>
               </div>
-              <input type="password" class="input-box" name="repassword"></input><br><br> 
-              <div class="button-container">
-                <div class="back-button">Back</div><br>
-            <button class="submit-button">Submit</button> 
-          </form>
+              <input type="password" class="input-box" name="repassword"></input><br> <br>
+
+              <div>
+                <input type="checkbox" id="terms" name="terms" value="terms" required>
+                <label for="terms" class="terms">I agree to the <a href="/terms" class="terms-link">Terms of Service</a></label><br><Br>
               </div>
+ 
+               <button class="submit-button">Submit</button> 
+          </form>
             </div>        
         </div>
+        
       </div>
-    </body>
-</html>
+      </div>
+{% endblock %}

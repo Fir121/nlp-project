@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GradeScale</title>
+{% extends "staticlayout.html" %}
+
+{% block head %}
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
     </style>
@@ -16,29 +13,9 @@
       href="https://unpkg.com/bs-brain@2.0.3/components/pricings/pricing-2/assets/css/pricing-2.css"
     />
     <link rel="stylesheet" href="{{url_for('static', filename='terms.css')}}" />
-  </head>
-  <body>
-    <!-- Header Section -->
-    <header>
-      <div class="left">
-        <a href="/" id="yes" style="height: 70px">
-          <img id="gradescale" src="{{url_for('static', filename='logo.png')}}" alt="Logo" />
-        </a>
-        <div class="header-content">
-          <h1>GradeScale</h1>
-          <h2>Grading. Evolved.</h2>
-        </div>
-      </div>
-      <div id="buttons">
-        <ul>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="/signup">Sign Up</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
-      </div>
-    </header>
+{% endblock %}
+
+{% block content %}
     <div id="terms-heading" style="padding-top: 50px">
       <h2 style="font-weight: 700; font-size: 38px">Terms of Use</h2>
     </div>
@@ -956,20 +933,4 @@
         constitute a waiver of such right or provision. <br />
       </p>
     </div>
-    <div class="footer-container">
-      <div class="footer-links">
-        <div class="footer-link">About us</div>
-        <div class="footer-link">Help Center</div>
-        <div class="footer-link">Support Line</div>
-        <div class="footer-link">Technology Used</div>
-
-        <div class="footer-link">Contact us</div>
-        <div class="footer-link">Teachers</div>
-        <div class="footer-link">Press</div>
-        <div class="footer-link">Pricing</div>
-      </div>
-      <div class="copyright">© GradeScale 2024</div>
-    </div>
-    <script type="module" src="./App.js"></script>
-  </body>
-</html>
+{% endblock %}
