@@ -181,6 +181,12 @@ table tbody tr :nth-child(4) {
   cursor: pointer;
 }
 
+.footer-link > a{
+  color: #FFFFFF;
+  text-decoration: none;
+
+}
+
 .small-submit-button{
   border-radius: 20px;
   background-color: #764F29;

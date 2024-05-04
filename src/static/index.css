@@ -148,6 +148,11 @@ table tbody tr :nth-child(5) {
   color: #FFFFFF;
   text-align: left;
 }
+.footer-link > a{
+  color: #FFFFFF;
+  text-decoration: none;
+
+}
 
 .footer-icons {
   display: flex;

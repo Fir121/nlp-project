@@ -111,6 +111,12 @@ nav ul li a:hover {
     color: #000000;
 }
 
+.footer-link > a{
+  color: #FFFFFF;
+  text-decoration: none;
+
+}
+
 .signup {
     margin: 0;
     padding: 8px 15.5px 9px 15px;
