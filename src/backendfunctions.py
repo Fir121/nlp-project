@@ -365,6 +365,18 @@ def zip_all_reports(reportpathlist):
             z.write("static/data/"+reportpath, reportpath)
     return path
 
+def get_teacher_name(conn, assignment_id):
+    try:
+        sql = f"SELECT Name FROM Users WHERE UserID IN (SELECT UserID FROM Courses WHERE CourseID IN (SELECT CourseID FROM Assignments WHERE AssignmentID = {assignment_id}))"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        row = cursor.fetchone()
+        if row is None:
+            return None
+        return row[0]
+    except sqlite3.Error as e:
+        print(e)
+        return None
 
 def get_assignment_details(conn, assignment_id):
     try:

@@ -130,7 +130,12 @@ def getreportdyn(assignmentid):
         return redirect('/')
     #todo get all datas and return a report
     submissions = bf.get_submissions(bf.create_connection(), assignmentid, session.get("userid"))
-    return jsonify(submissions)
+    # return jsonify(submissions)
+    student_name = session.get("name")
+    teacher_name = bf.get_teacher_name(bf.create_connection(), assignmentid)
+    submissions = {"submissions":submissions}
+    submissions["Final Grade"] = f'{round(sum([submission[1]["Final Grade"] for submission in submissions["submissions"]])/len(submissions["submissions"]),2) }/{sum([submission[1]["Max Score"] for submission in submissions["submissions"]])}'
+    return render_template("student/grading.html", submissions=submissions, student_name=student_name, teacher_name=teacher_name)
 
 @app.route("/student/assignment/<int:assignmentid>", methods=['GET','POST'])
 def student_assignment(assignmentid):
