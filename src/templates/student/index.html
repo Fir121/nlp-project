@@ -1,0 +1,23 @@
+{% extends "student/studentlayout.html" %}
+{% block content %}
+    <div id="container" style="min-height: 90vh;">
+      <h1 style="margin: 20px; margin-top: 40px; font-size:45px;">Hello! {{session["name"]}}</h1>
+      <div class="section-cards">
+        <div class="subjects">
+          <h2 style="margin-bottom: 1px;padding-bottom: 1px;">Courses Enrolled</h2>
+          <h5 style="margin-bottom: 30px;">Ask your teacher to add you to the respective course</h5>
+          <div class="cards-container" id="TOC">
+            
+            {% for course in courses %}
+            <div>
+              <a href="/student/course/{{course[0]}}" style="text-decoration: none; color: black;">
+                <img src="{{url_for('static', filename='calculator.png')}}" />
+                <h3>{{course[1]}}</h3></a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

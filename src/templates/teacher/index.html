@@ -1,0 +1,49 @@
+{% extends "student/studentlayout.html" %}
+{% block content %}
+    <div id="container" style="min-height: 90vh;">
+      <h1 style="margin: 20px; margin-top: 40px; font-size:45px;">Hello! {{session["name"]}}</h1>
+      <div class="section-cards">
+        <div class="subjects">
+          <div style="display: block;">
+            <h2 style="margin-bottom: 1px;padding-bottom: 1px;display:inline-block;width:fit-content">Courses</h2>
+            <button onclick="addCoursePopup()" class="submit-button" style="display: inline-block;float:right;">Add Course</button>
+          </div>
+          <div class="cards-container" id="TOC">
+            
+            {% for course in courses %}
+            <div>
+              <a href="/teacher/course/{{course[0]}}" style="text-decoration: none; color: black;">
+                <img src="{{url_for('static', filename='calculator.png')}}" />
+                <h3>{{course[1]}}</h3></a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function addCoursePopup(){
+        var popup = document.createElement("div");
+        popup.className = "popup";
+        popup.innerHTML = `
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h2 style="margin-bottom:30px;">Add Course</h2>
+          <form action="/teacher/addcourse" method="POST">
+            <label for="coursename">Course Name:</label>
+            <input type="text" id="coursename" name="coursename" required><br><br>
+            <input type="submit" class="small-submit-button" value="Submit">
+          </form>
+        </div>
+        `;
+        document.body.appendChild(popup);
+      }
+
+      function closePopup(){
+        var popup = document.getElementsByClassName("popup")[0];
+        popup.remove();
+      }
+    </script>
+{% endblock %}

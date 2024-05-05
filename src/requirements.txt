@@ -1,0 +1,8 @@
+flask
+bcrypt
+flask-session
+sentence-transformers
+deepmultilingualpunctuation
+textblob
+nltk
+happytransformer

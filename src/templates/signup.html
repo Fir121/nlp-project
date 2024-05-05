@@ -1,0 +1,78 @@
+{% extends "staticlayout.html" %}
+        
+{% block content %}
+        <!-- Main Content Section -->
+        <div style="width:100%;display: block;">
+        <div class="paragraph1 container">
+          <div class="row">
+          <div class="col-12 col-lg-5 text-center">
+            <img src="{{url_for('static', filename='signup.png')}}" style="width: 80%;"></img>
+          </div>
+          <div class="col-12 col-lg-7 text-start">
+            <div class="login-section">
+              <div class="title">Sign Up</div>
+              <div class="sign-up">
+                <span>Already Have an Account ?</span>
+                <a href="/login" class="sign-up-button">Log In</a> 
+              </div>
+          <form method="post" action="/signup">
+              <div class="join-text">Join GradeScale as:</div><br>
+              <div class="join-container" style="cursor: pointer;">
+                <div id="teacher" class="join-as-teacher">
+                  <span id="textteach" class="text-teacher">Teacher</span>
+                </div>
+                <div id="student" class="join-as-student">
+                  <span id="textstud" class="text-student">Student</span>
+                </div>
+              </div>
+              <input type="text" id="selectedtoggle" name="selectedtoggle" style="opacity:0"></input>
+              <script>
+
+                document.getElementById('selectedtoggle').value = 'teacher';
+                document.getElementById('teacher').addEventListener('click', function() {
+                  
+                    document.getElementById('teacher').classList = 'join-as-teacher';
+                    document.getElementById('student').classList = 'join-as-student';
+                    document.getElementById('textteach').classList = 'text-teacher';
+                    document.getElementById('textstud').classList = 'text-student';
+                    document.getElementById('selectedtoggle').value = 'teacher';
+                 
+                });
+                document.getElementById('student').addEventListener('click', function() {
+                  
+                    document.getElementById('teacher').classList = 'join-as-student';
+                    document.getElementById('student').classList = 'join-as-teacher';
+                    document.getElementById('textteach').classList = 'text-student';
+                    document.getElementById('textstud').classList = 'text-teacher';
+                    document.getElementById('selectedtoggle').value = 'student';
+                });
+              </script><br>
+              <div class="enter-name">Enter Your Name</div><br>
+              <input type="text" class="input-box" name="name"></input><br><br>
+              <div class="email-address-section">
+                <div class="email-address-text">Enter Your Email Address</div>
+              </div>   
+              <input type="text" class="input-box" name="email"></input>  
+              <br>       <br>
+              <div class="password-section">
+                <div class="password-text">Enter a Password</div>
+              </div>
+              <input type="password" class="input-box" name="password"></input><br><br>
+              <div class="password-section">
+                <div class="password-text">Re-enter Your Password</div>
+              </div>
+              <input type="password" class="input-box" name="repassword"></input><br> <br>
+
+              <div>
+                <input type="checkbox" id="terms" name="terms" value="terms" required>
+                <label for="terms" class="terms">I agree to the <a href="/terms" class="terms-link">Terms of Service</a></label><br><Br>
+              </div>
+ 
+               <button class="submit-button">Submit</button> 
+          </form>
+            </div>        
+        </div>
+        
+      </div>
+      </div>
+{% endblock %}
