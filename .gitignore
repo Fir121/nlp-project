@@ -4,3 +4,6 @@
 *.docx
 *.doc
 *.zip
+.venv
+flask_session
+*data/*

@@ -1,8 +1,8 @@
 import accuracy, relevance, organization, punctuation_code, spelling_code, vocabulary_code, grammar_code
 
 file_html = open("result.html", "w")
-def grader(question,ref_ans,answer):
-    final = dict(accuracy = accuracy.accuracy(ref_ans,answer),
+def grader(question,ref_ans,answer,model):
+    final = dict(accuracy = accuracy.accuracy(ref_ans,answer,model),
                  relevance = relevance.relevance(question,ref_ans,answer),
                  organization = organization.organization(answer),
                  punctuation = punctuation_code.count_punctuation(answer),
