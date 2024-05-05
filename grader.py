@@ -1,10 +1,9 @@
-import accuracy,relevance,organization,coherence
+import accuracy,relevance,organization
 
-def grader(question,ref_ans,answer):
-    final = dict(accuracy = accuracy.accuracy(ref_ans,answer),
+def grader(question,ref_ans,answer,model):
+    final = dict(accuracy = accuracy.accuracy(ref_ans,answer,model),
                  relevance = relevance.relevance(question,ref_ans,answer),
-                 organization = organization.organization(answer),
-                 coherence = coherence.coherence(ref_ans,answer))
+                 organization = organization.organization(answer))
 
     return final
 
