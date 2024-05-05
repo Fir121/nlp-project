@@ -1,11 +1,11 @@
 from sentence_transformers import SentenceTransformer,util
 import warnings,math
 
-def accuracy(ref_answer,answer):
+def accuracy(ref_answer,answer, m):
     #Ignore all warnings
     warnings.filterwarnings('ignore')
     #Get Similarity from model
-    similarity = A2A(ref_answer,answer)
+    similarity = A2A(ref_answer,answer, m)
     final_similarity = (1 - 1 / math.exp(3*similarity))*100
     if final_similarity < 0:
         final_similarity = 0 
@@ -13,9 +13,12 @@ def accuracy(ref_answer,answer):
     return final_similarity
 
 
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
-def A2A(ref_ans,ans):
+def A2A(ref_ans,ans, m):
     #Importing pre-trained model from hugging face
+    if (m == 0):
+        model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+    else:
+        model = SentenceTransformer('nlp/FineTuned')
     
     
     #Converting reference answer to 384 dimensions vectors
