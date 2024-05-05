@@ -126,9 +126,9 @@ def signup(conn, name, email, password, repeat_password, is_teacher):
     hashed_password = hash_password(password)
     
     try:
-        sql = f"INSERT INTO Users (Name, Email, Password, IsTeacher) VALUES ('{name}', '{email}', '{hashed_password}', {is_teacher})"
+        sql = "INSERT INTO Users (Name, Email, Password, IsTeacher) VALUES (?, ?, ?, ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (name, email, hashed_password, is_teacher))
         conn.commit()
         return cursor.lastrowid
     except sqlite3.Error as e:
@@ -139,9 +139,9 @@ def signup(conn, name, email, password, repeat_password, is_teacher):
 def login(conn, email, password):
     try:
         hashed_password = hash_password(password)
-        sql = f"SELECT UserID FROM Users WHERE Email = '{email}' AND Password = '{hashed_password}'"
+        sql = "SELECT UserID FROM Users WHERE Email = ? AND Password = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (email, hashed_password))
         row = cursor.fetchone()
         if row:
             sql = f"SELECT UserID, IsTeacher, name FROM Users WHERE UserID = {row[0]}"
@@ -156,9 +156,9 @@ def login(conn, email, password):
 # Function to add a course
 def add_course(conn, user_id, course_name):
     try:
-        sql = f"INSERT INTO Courses (UserID, CourseName) VALUES ({user_id}, '{course_name}')"
+        sql = "INSERT INTO Courses (UserID, CourseName) VALUES (?, ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (user_id, course_name))
         conn.commit()
         return cursor.lastrowid
     except sqlite3.Error as e:
@@ -168,9 +168,9 @@ def add_course(conn, user_id, course_name):
 # Function to add an assignment
 def add_assignment(conn, course_id, name, section, due_date):
     try:
-        sql = f"INSERT INTO Assignments (CourseID, Name, Section, DueDate) VALUES ({course_id}, '{name}', '{section}', '{due_date}')"
+        sql = "INSERT INTO Assignments (CourseID, Name, Section, DueDate) VALUES (?, ?, ?, ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (course_id, name, section, due_date))
         conn.commit()
         return cursor.lastrowid
     except sqlite3.Error as e:
@@ -179,9 +179,9 @@ def add_assignment(conn, course_id, name, section, due_date):
 
 def get_student_user_id(conn, email):
     try:
-        sql = f"SELECT UserID FROM Users WHERE Email = '{email}' and IsTeacher = 0"
+        sql = "SELECT UserID FROM Users WHERE Email = ? and IsTeacher = 0"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (email,))
         row = cursor.fetchone()
         if row is None:
             return None
@@ -193,9 +193,9 @@ def get_student_user_id(conn, email):
 # Function to add a student to a course
 def add_student_to_course(conn, student_user_id, course_id):
     try:
-        sql = f"INSERT INTO Enrollments (StudentUserID, CourseID) VALUES ({student_user_id}, {course_id})"
+        sql = "INSERT INTO Enrollments (StudentUserID, CourseID) VALUES (?, ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (student_user_id, course_id))
         conn.commit()
         return True
     except sqlite3.Error as e:
@@ -205,9 +205,9 @@ def add_student_to_course(conn, student_user_id, course_id):
 # Function to add a question to an assignment
 def add_question_to_assignment(conn, assignment_id, question, answer, score):
     try:
-        sql = f"INSERT INTO Questions (AssignmentID, Question, Answer, Score) VALUES ({assignment_id}, '{question}', '{answer}', {score})"
+        sql = "INSERT INTO Questions (AssignmentID, Question, Answer, Score) VALUES (?, ?, ?, ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (assignment_id, question, answer, score))
         conn.commit()
         return cursor.lastrowid
     except sqlite3.Error as e:
@@ -216,19 +216,19 @@ def add_question_to_assignment(conn, assignment_id, question, answer, score):
     
 def get_students(conn, course_id):
     try:
-        sql = f"SELECT UserID, Name, Email FROM Users WHERE UserID IN (SELECT StudentUserID FROM Enrollments WHERE CourseID = {course_id})"
+        sql = "SELECT UserID, Name, Email FROM Users WHERE UserID IN (SELECT StudentUserID FROM Enrollments WHERE CourseID = ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (course_id,))
         rows = cursor.fetchall()
         rows = [list(row) for row in rows]
-        sql = f"SELECT SUM(Score) FROM Questions WHERE AssignmentID IN (SELECT AssignmentID FROM Assignments WHERE CourseID = {course_id})"
-        cursor.execute(sql)
+        sql = "SELECT SUM(Score) FROM Questions WHERE AssignmentID IN (SELECT AssignmentID FROM Assignments WHERE CourseID = ?)"
+        cursor.execute(sql, (course_id,))
         total = cursor.fetchone()
         if total[0] is None:
             total = (0,)
         for row in rows:
-            sql = f"SELECT SUM(Score) FROM Submissions WHERE UserID = {row[0]} AND QuestionID in (SELECT QuestionID FROM Questions WHERE AssignmentID IN (SELECT AssignmentID FROM Assignments WHERE CourseID = {course_id}))"
-            cursor.execute(sql)
+            sql = "SELECT SUM(Score) FROM Submissions WHERE UserID = ? AND QuestionID in (SELECT QuestionID FROM Questions WHERE AssignmentID IN (SELECT AssignmentID FROM Assignments WHERE CourseID = ?))"
+            cursor.execute(sql, (row[0], course_id))
             score = cursor.fetchone()
             if score[0] is None:
                 score = (0,)
@@ -240,9 +240,9 @@ def get_students(conn, course_id):
 
 def get_course_name(conn, course_id):
     try:
-        sql = f"SELECT CourseName FROM Courses WHERE CourseID = {course_id}"
+        sql = "SELECT CourseName FROM Courses WHERE CourseID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (course_id,))
         row = cursor.fetchone()
         return row[0]
     except sqlite3.Error as e:
@@ -252,9 +252,9 @@ def get_course_name(conn, course_id):
 # Function to get courses of a user
 def get_courses(conn, user_id):
     try:
-        sql = f"SELECT CourseID, CourseName FROM Courses WHERE UserID = {user_id}"
+        sql = "SELECT CourseID, CourseName FROM Courses WHERE UserID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (user_id,))
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as e:
@@ -263,9 +263,9 @@ def get_courses(conn, user_id):
 
 def get_student_courses(conn, user_id):
     try:
-        sql = f"SELECT CourseID, CourseName FROM Courses WHERE CourseID IN (SELECT CourseID FROM Enrollments WHERE StudentUserID = {user_id})"
+        sql = "SELECT CourseID, CourseName FROM Courses WHERE CourseID IN (SELECT CourseID FROM Enrollments WHERE StudentUserID = ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (user_id,))
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as e:
@@ -275,9 +275,9 @@ def get_student_courses(conn, user_id):
 # Function to get assignments of a course
 def get_assignments(conn, course_id):
     try:
-        sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id}"
+        sql = "SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (course_id,))
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as e:
@@ -286,9 +286,9 @@ def get_assignments(conn, course_id):
 
 def get_incomplete_assignments(conn, course_id, student_id):
     try:
-        sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id} AND AssignmentID NOT IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = {student_id}))"
+        sql = "SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = ? AND AssignmentID NOT IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = ?))"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (course_id, student_id))
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as e:
@@ -298,15 +298,15 @@ def get_incomplete_assignments(conn, course_id, student_id):
 import json
 def get_submissions(conn, assignment_id, student_id):
     try:
-        sql = f"SELECT SubmissionID, ReportData FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {assignment_id})"
+        sql = "SELECT SubmissionID, ReportData FROM Submissions WHERE UserID = ? AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (student_id, assignment_id))
         rows = cursor.fetchall()
         rows = [list(row) for row in rows]
         for row in rows:
             row[1] = json.loads(row[1])
-            sql = f"Select Question from Questions where QuestionID in (SELECT QuestionID from Submissions where SubmissionID = {row[0]})"
-            cursor.execute(sql)
+            sql = "SELECT Question FROM Questions WHERE QuestionID IN (SELECT QuestionID FROM Submissions WHERE SubmissionID = ?)"
+            cursor.execute(sql, (row[0],))
             question = cursor.fetchone()
             row.append(question[0])
         return rows
@@ -316,14 +316,14 @@ def get_submissions(conn, assignment_id, student_id):
 
 def get_completed_assignments(conn, course_id, student_id):
     try:
-        sql = f"SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = {course_id} AND AssignmentID IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = {student_id}))"
+        sql = "SELECT AssignmentID, Name, Section, DueDate FROM Assignments WHERE CourseID = ? AND AssignmentID IN (SELECT AssignmentID from Questions where QuestionID in (SELECT QuestionID FROM Submissions WHERE UserID = ?))"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (course_id, student_id))
         rows = cursor.fetchall()
         rows = [list(row) for row in rows]
         for row in rows:
-            sql = f"SELECT AVG(Score) FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {row[0]})"
-            cursor.execute(sql)
+            sql = "SELECT AVG(Score) FROM Submissions WHERE UserID = ? AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = ?)"
+            cursor.execute(sql, (student_id, row[0]))
             score = cursor.fetchone()
             row.append(round(float(score[0]),2))
         return rows
@@ -333,9 +333,9 @@ def get_completed_assignments(conn, course_id, student_id):
 
 def get_all_reports(conn, assignment_id, student_id):
     try:
-        sql = f"SELECT ReportPath FROM Submissions WHERE UserID = {student_id} AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = {assignment_id})"
+        sql = "SELECT ReportPath FROM Submissions WHERE UserID = ? AND QuestionID in (SELECT QuestionID from Questions where AssignmentID = ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (student_id, assignment_id))
         rows = cursor.fetchall()
         rows = [row[0] for row in rows]
         return rows
@@ -345,9 +345,9 @@ def get_all_reports(conn, assignment_id, student_id):
 
 def get_question(conn, questionid):
     try:
-        sql = f"SELECT Question, Answer, Score FROM Questions WHERE QuestionID = {questionid}"
+        sql = "SELECT Question, Answer, Score FROM Questions WHERE QuestionID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (questionid,))
         row = cursor.fetchone()
         return row
     except sqlite3.Error as e:
@@ -367,9 +367,9 @@ def zip_all_reports(reportpathlist):
 
 def get_teacher_name(conn, assignment_id):
     try:
-        sql = f"SELECT Name FROM Users WHERE UserID IN (SELECT UserID FROM Courses WHERE CourseID IN (SELECT CourseID FROM Assignments WHERE AssignmentID = {assignment_id}))"
+        sql = "SELECT Name FROM Users WHERE UserID IN (SELECT UserID FROM Courses WHERE CourseID IN (SELECT CourseID FROM Assignments WHERE AssignmentID = ?))"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (assignment_id,))
         row = cursor.fetchone()
         if row is None:
             return None
@@ -380,9 +380,9 @@ def get_teacher_name(conn, assignment_id):
 
 def get_assignment_details(conn, assignment_id):
     try:
-        sql = f"SELECT Name, CourseID FROM Assignments WHERE AssignmentID = {assignment_id}"
+        sql = "SELECT Name, CourseID FROM Assignments WHERE AssignmentID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (assignment_id,))
         row = cursor.fetchone()
         return row
     except sqlite3.Error as e:
@@ -391,9 +391,9 @@ def get_assignment_details(conn, assignment_id):
 
 def delete_all_questions(conn, assignment_id):
     try:
-        sql = f"DELETE FROM Questions WHERE AssignmentID = {assignment_id}"
+        sql = "DELETE FROM Questions WHERE AssignmentID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (assignment_id,))
         conn.commit()
         return True
     except sqlite3.Error as e:
@@ -403,9 +403,9 @@ def delete_all_questions(conn, assignment_id):
 # Function to get questions of an assignment
 def get_questions(conn, assignment_id):
     try:
-        sql = f"SELECT QuestionID, Question, Answer, Score FROM Questions WHERE AssignmentID = {assignment_id}"
+        sql = "SELECT QuestionID, Question, Answer, Score FROM Questions WHERE AssignmentID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (assignment_id,))
         rows = cursor.fetchall()
         return rows
     except sqlite3.Error as e:
@@ -414,9 +414,9 @@ def get_questions(conn, assignment_id):
 
 def get_assignment(conn, assignment_id):
     try:
-        sql = f"SELECT CourseID, Name, Section, DueDate FROM Assignments WHERE AssignmentID = {assignment_id}"
+        sql = "SELECT CourseID, Name, Section, DueDate FROM Assignments WHERE AssignmentID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (assignment_id,))
         row = cursor.fetchone()
         return row
     except sqlite3.Error as e:
@@ -426,9 +426,9 @@ def get_assignment(conn, assignment_id):
 # Function to make a submission
 def make_submission(conn, questionid, user_id, answer):
     try:
-        sql = f"INSERT INTO Submissions (QuestionID, UserID, AnswerText) VALUES ({questionid}, {user_id}, '{answer}')"
+        sql = "INSERT INTO Submissions (QuestionID, UserID, AnswerText) VALUES (?, ?, ?)"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (questionid, user_id, answer))
         conn.commit()
         return cursor.lastrowid
     except sqlite3.Error as e:
@@ -438,9 +438,9 @@ def make_submission(conn, questionid, user_id, answer):
 # Function to store a report
 def store_report_data(conn, submission_id, data, score):
     try:
-        sql = f"UPDATE Submissions SET ReportData = '{data}', Score={score} WHERE SubmissionID = {submission_id}"
+        sql = "UPDATE Submissions SET ReportData = ?, Score = ? WHERE SubmissionID = ?"
         cursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(sql, (data, score, submission_id))
         conn.commit()
         return True
     except sqlite3.Error as e:
