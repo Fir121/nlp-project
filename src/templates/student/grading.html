@@ -58,7 +58,7 @@
       <td class="first">{{loop.index}}</td>
       <td class="center">{{submission[1]["accuracy"]}}</td>
       <td class="center">{{submission[1]["organization"]}}</td>
-        <td class="center">{{(submission[1]["grammar"] + submission[1]["punctuation"] + submission[1]["vocabulary"]) / 3}}</td>
+        <td class="center">{{ ((submission[1]["grammar"] + submission[1]["punctuation"] + submission[1]["vocabulary"]) / 3) | round(2)}}</td>
         <td class="center">{{submission[1]["relevance"]}}</td>
     </tr>
     {% endfor %}

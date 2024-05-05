@@ -21,7 +21,7 @@ def generate_html_page(score):
     return fpath
 
 def grader(question,ref_ans,answer, score):
-    final = dict(accuracy = accuracy.accuracy(ref_ans,answer),
+    final = dict(accuracy = accuracy.accuracy(ref_ans,answer, 1),
                  relevance = relevance.relevance(question,ref_ans,answer),
                  organization = organization.organization(answer),
                  punctuation = punctuation_code.puncscore(answer)*100,
@@ -34,6 +34,13 @@ def grader(question,ref_ans,answer, score):
         final[key] = round((final[key]/100)*score,2)
     final["Max Score"] = score
     print(final)
-    path = generate_html_page(final)
-    print(path)
+    # path = generate_html_page(final)
+    # print(path)
     return final
+
+if __name__ == "__main__":
+    question = "What is the capital of India?"
+    ref_ans = "The capital of India is New Delhi."
+    answer = "The capital of India is Rajasthan."
+    score = 10
+    print(grader(question,ref_ans,answer, score))
