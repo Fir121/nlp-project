@@ -34,8 +34,8 @@ def grader(question,ref_ans,answer, score):
         final[key] = round((final[key]/100)*score,2)
     final["Max Score"] = score
     print(final)
-    path = generate_html_page(final)
-    print(path)
+    # path = generate_html_page(final)
+    # print(path)
     return final
 
 if __name__ == "__main__":
